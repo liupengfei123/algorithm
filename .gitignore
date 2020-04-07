@@ -1,0 +1,10 @@
+# Compiled class file
+*.class
+
+/target
+
+*.iml
+
+# idea
+.idea
+
