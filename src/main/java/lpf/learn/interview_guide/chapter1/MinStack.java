@@ -1,5 +1,7 @@
 package lpf.learn.interview_guide.chapter1;
 
+import com.sun.istack.internal.NotNull;
+
 import java.util.Stack;
 
 /**
@@ -132,5 +134,122 @@ public class MinStack {
         }
     }
 
+
+
+    /**
+     * 按照策略一 实现的其他类型
+     */
+    private static class MyStack3<T extends Comparable> extends Stack{
+        private Stack<T> stackData;
+        private Stack<T> stackMin;
+
+        public MyStack3(){
+            this.stackData = new Stack<T>();
+            this.stackMin = new Stack<T>();
+        }
+
+        /**
+         * 在压入数据时：
+         *   如果为空，则 num 压入 stackMin
+         *   如果不为空，则比较 num 与 stackMin 的栈顶元素哪个更小：
+         *      如果 num 更小或者相等（等于也压入是为了弹出），则 num 压入栈送，反之 stackMin 不压入任何内容
+         *
+         * @param value
+         */
+        public void push(@NotNull T value){
+            if (this.stackMin.isEmpty()){
+                this.stackMin.push(value);
+            } else if (value.compareTo(this.getmin()) <= 0){
+                this.stackMin.push(value);
+            }
+            this.stackData.push(value);
+        }
+
+        /**
+         * 在弹出数据时：
+         *   由于压入规则可知 stackMin 中的元素是 从栈低到栈顶逐渐变小，所以弹出的数据只会比栈顶元素大或者相等，
+         *   如果是相等则需要将 stackMin 栈顶也消除一个，因为这是压入时重复压入的。
+         */
+        public T pop(){
+            if (this.stackData.isEmpty()){
+                throw new RuntimeException();
+            }
+            T value = this.stackData.pop();
+            if (this.getmin().compareTo(value) == 0){
+                this.stackMin.pop();
+            }
+            return value;
+        }
+
+        /**
+         * 获取最小值 即 stackMin 的栈顶元素
+         * @return
+         */
+        public T getmin(){
+            if (this.stackMin.isEmpty()){
+                throw new RuntimeException();
+            }
+            return this.stackMin.peek();
+        }
+    }
+
+
+
+    /**
+     * 按照策略二 实现的其他类型
+     */
+    private static class MyStack4<T extends Comparable> extends Stack{
+        private Stack<T> stackData;
+        private Stack<T> stackMin;
+
+        public MyStack4(){
+            this.stackData = new Stack<T>();
+            this.stackMin = new Stack<T>();
+        }
+
+        /**
+         * 在压入数据时：
+         *   如果为空，则 num 压入 stackMin
+         *   如果不为空，则将 num 与 stackMin 的栈顶元素更小的压入 stackMin
+         * @param value
+         */
+        public void push(@NotNull T value){
+            if (this.stackMin.isEmpty()){
+                this.stackMin.push(value);
+            } else {
+                this.stackMin.push(getComparableMinValue(value, this.getmin()));
+            }
+            this.stackData.push(value);
+        }
+
+        /**
+         * 在弹出数据时：
+         *   由于压入规则可知 stackMin 中的元素是 从栈低到栈顶逐渐变小，所以弹出的数据只会比栈顶元素大或者相等，
+         *   因为重复压入了，所以每一步都有一个 stackMin 对应位置表示当前步骤的最小值，所以也要弹出
+         */
+        public T pop(){
+            if (this.stackData.isEmpty()){
+                throw new RuntimeException();
+            }
+            this.stackMin.pop();
+            return this.stackData.pop();
+        }
+
+        /**
+         * 获取最小值 即 stackMin 的栈顶元素
+         * @return
+         */
+        public T getmin(){
+            if (this.stackMin.isEmpty()){
+                throw new RuntimeException();
+            }
+            return this.stackMin.peek();
+        }
+
+
+        private T getComparableMinValue(T v1, T v2){
+            return v1.compareTo(v2) <= 0 ? v1 : v2;
+        }
+    }
 
 }
