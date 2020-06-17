@@ -2,6 +2,7 @@ package lpf.learn.leetcode.learn.array;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -23,29 +24,22 @@ public class Merge {
         if (intervals == null || intervals.length == 0) {
             return new int[0][];
         }
-        Arrays.sort(intervals, (int[] a1, int[] a2) -> {
-            return a1[0] - a2[0];
-        });
+        Arrays.sort(intervals, Comparator.comparingInt((int[] a) -> a[0]));
 
-        List<int[]> result = new ArrayList<int[]>();
+        List<int[]> result = new ArrayList<>();
 
         int[] temp1 = intervals[0];
-        int[] temp2 = null;
-        for (int i = 1; i < intervals.length; i++) {
-            temp2 = intervals[i];
 
-            if (temp1[1] >= temp2[0]) {
-                temp1 = new int[]{temp1[0], Math.max(temp1[1], temp2[1])};
+        for (int[] interval : intervals) {
+            if (temp1[1] >= interval[0]) {
+                temp1 = new int[]{temp1[0], Math.max(temp1[1], interval[1])};
             } else {
                 result.add(temp1);
-                temp1 = temp2;
+                temp1 = interval;
             }
         }
-        result.add(temp1);
 
+        result.add(temp1);
         return result.toArray(new int[0][]);
     }
-
-
-
 }

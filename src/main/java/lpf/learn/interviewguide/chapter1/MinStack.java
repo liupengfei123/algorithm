@@ -1,6 +1,4 @@
-package lpf.learn.interview_guide.chapter1;
-
-import com.sun.istack.internal.NotNull;
+package lpf.learn.interviewguide.chapter1;
 
 import java.util.Stack;
 
@@ -31,8 +29,8 @@ public class MinStack {
         private Stack<Integer> stackMin;
 
         public MyStack1(){
-            this.stackData = new Stack<Integer>();
-            this.stackMin = new Stack<Integer>();
+            this.stackData = new Stack<>();
+            this.stackMin = new Stack<>();
         }
 
         /**
@@ -90,8 +88,8 @@ public class MinStack {
         private Stack<Integer> stackMin;
 
         public MyStack2(){
-            this.stackData = new Stack<Integer>();
-            this.stackMin = new Stack<Integer>();
+            this.stackData = new Stack<>();
+            this.stackMin = new Stack<>();
         }
 
         /**
@@ -139,13 +137,13 @@ public class MinStack {
     /**
      * 按照策略一 实现的其他类型
      */
-    private static class MyStack3<T extends Comparable> extends Stack{
+    private static class MyStack3<T extends Comparable> extends Stack {
         private Stack<T> stackData;
         private Stack<T> stackMin;
 
         public MyStack3(){
-            this.stackData = new Stack<T>();
-            this.stackMin = new Stack<T>();
+            this.stackData = new Stack<>();
+            this.stackMin = new Stack<>();
         }
 
         /**
@@ -156,7 +154,7 @@ public class MinStack {
          *
          * @param value
          */
-        public void push(@NotNull T value){
+        public void push(T value){
             if (this.stackMin.isEmpty()){
                 this.stackMin.push(value);
             } else if (value.compareTo(this.getmin()) <= 0){
@@ -203,8 +201,8 @@ public class MinStack {
         private Stack<T> stackMin;
 
         public MyStack4(){
-            this.stackData = new Stack<T>();
-            this.stackMin = new Stack<T>();
+            this.stackData = new Stack<>();
+            this.stackMin = new Stack<>();
         }
 
         /**
@@ -213,7 +211,7 @@ public class MinStack {
          *   如果不为空，则将 num 与 stackMin 的栈顶元素更小的压入 stackMin
          * @param value
          */
-        public void push(@NotNull T value){
+        public void push(T value){
             if (this.stackMin.isEmpty()){
                 this.stackMin.push(value);
             } else {
