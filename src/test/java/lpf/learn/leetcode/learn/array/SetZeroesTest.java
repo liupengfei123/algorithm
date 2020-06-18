@@ -7,7 +7,7 @@ import org.junit.Test;
 public class SetZeroesTest {
 
     @Test
-    public void pivotIndexTest(){
+    public void setZeroesTest(){
         SetZeroes setZeroes = new SetZeroes();
 
         int[][] ints1 = {{1,1,1}, {1,0,1}, {1,1,1}};

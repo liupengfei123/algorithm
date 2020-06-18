@@ -7,7 +7,7 @@ import org.junit.Test;
 public class RotateTest {
 
     @Test
-    public void pivotIndexTest(){
+    public void rotateTest(){
         Rotate rotate = new Rotate();
 
         int[][] ints1 = {{1,2,3}, {4,5,6}, {7,8,9}};

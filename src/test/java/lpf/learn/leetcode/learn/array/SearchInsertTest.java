@@ -7,7 +7,7 @@ import org.junit.Test;
 public class SearchInsertTest {
 
     @Test
-    public void pivotIndexTest(){
+    public void searchInsertTest(){
         SearchInsert searchInsert = new SearchInsert();
 
         Assert.assertEquals(2, searchInsert.searchInsert(new int[]{1,3,5,6}, 5));

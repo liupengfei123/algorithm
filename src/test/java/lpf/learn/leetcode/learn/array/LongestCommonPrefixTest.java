@@ -7,7 +7,7 @@ import org.junit.Test;
 public class LongestCommonPrefixTest {
 
     @Test
-    public void pivotIndexTest(){
+    public void longestCommonPrefixTest(){
         LongestCommonPrefix longestCommonPrefix = new LongestCommonPrefix();
 
         Assert.assertEquals("fl", longestCommonPrefix.longestCommonPrefix(new String[]{"flower","flow","flight"}));

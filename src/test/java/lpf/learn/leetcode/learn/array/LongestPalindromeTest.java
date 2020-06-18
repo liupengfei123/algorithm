@@ -7,7 +7,7 @@ import org.junit.Test;
 public class LongestPalindromeTest {
 
     @Test
-    public void pivotIndexTest(){
+    public void longestPalindromeTest(){
         LongestPalindrome longestPalindrome = new LongestPalindrome();
 
 

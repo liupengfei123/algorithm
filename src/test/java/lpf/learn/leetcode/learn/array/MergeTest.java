@@ -7,7 +7,7 @@ import org.junit.Test;
 public class MergeTest {
 
     @Test
-    public void pivotIndexTest(){
+    public void mergeTest(){
         Merge merge = new Merge();
 
         Assert.assertEquals(new int[][]{{1,6},{8,10},{15,18}}, merge.merge(new int[][]{{1,3},{2,6},{8,10},{15,18}}));
