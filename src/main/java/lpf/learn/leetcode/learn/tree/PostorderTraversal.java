@@ -36,19 +36,24 @@ public class PostorderTraversal {
 
 
 
-    public List<Integer> preorderTraversal2(TreeNode root) {
-        List<Integer> result = new LinkedList<>();
+    public List<Integer> postorderTraversal2(TreeNode root) {
+        LinkedList<Integer> result = new LinkedList<>();
         Stack<TreeNode> stack = new Stack<>();
+        if (root == null) {
+            return result;
+        }
 
-        TreeNode current = root;
-        while (current != null || !stack.isEmpty()) {
-            while (current != null) {
-                stack.push(current);
-                current = current.left;
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            result.addFirst(node.val);
+
+            if (node.left != null) {
+                stack.push(node.left);
             }
-            current = stack.pop();
-            result.add(current.val);
-            current = current.right;
+            if (node.right != null) {
+                stack.push(node.right);
+            }
         }
         return result;
     }

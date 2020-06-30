@@ -36,7 +36,7 @@ public class InorderTraversal {
 
 
 
-    public List<Integer> preorderTraversal2(TreeNode root) {
+    public List<Integer> inorderTraversal2(TreeNode root) {
         List<Integer> result = new LinkedList<>();
         Stack<TreeNode> stack = new Stack<>();
 
