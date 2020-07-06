@@ -1,5 +1,6 @@
 package lpf.learn.leetcode.learn.tree;
 
+import lpf.learn.leetcode.learn.entity.TreeNode;
 import org.junit.Assert;
 import org.junit.Test;
 

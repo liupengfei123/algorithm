@@ -1,5 +1,7 @@
 package lpf.learn.leetcode.learn.tree;
 
+import lpf.learn.leetcode.learn.entity.TreeNode;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
