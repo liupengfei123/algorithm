@@ -20,7 +20,6 @@ public class SerializeAndDeserializeTest {
 
         TreeNode te = temp.deserialize(temp.serialize(root));
 
-        System.out.println(te);
 
 
     }
