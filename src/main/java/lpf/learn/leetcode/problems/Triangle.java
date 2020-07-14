@@ -1,5 +1,6 @@
 package lpf.learn.leetcode.problems;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**120. 三角形最小路径和
@@ -29,22 +30,14 @@ public class Triangle {
             return 0;
         }
         int n = triangle.size();
-        int[] dp = new int[n];
-        dp[0] = triangle.get(0).get(0);
+        //通过向右平移一个数组长度，在解决 当j=0时， j-1数组越界的情况
+        int[] dp = new int[n + 1];
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        dp[1] = triangle.get(0).get(0);
+
         for (int i = 1; i < n; i++) {
-            for (int j = triangle.get(i).size() - 1; j >= 0 ; j--) {
-                int value = triangle.get(i).get(j);
-
-                int lastValeLeft = Integer.MAX_VALUE;
-                if (j > 0) {
-                    lastValeLeft = dp[j - 1];
-                }
-
-                int lastValeRight = Integer.MAX_VALUE;
-                if (j < i) {
-                    lastValeRight = dp[j];
-                }
-                dp[j] = value + Math.min(lastValeLeft, lastValeRight);
+            for (int j = i + 1; j > 0 ; j--) {
+                dp[j] = triangle.get(i).get(j - 1) + Math.min(dp[j - 1], dp[j]);
             }
         }
 
