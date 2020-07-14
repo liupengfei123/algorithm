@@ -2,7 +2,7 @@ package lpf.learn.leetcode.learn.linked_list;
 
 import lpf.learn.leetcode.learn.entity.ListNode;
 
-/**
+/** 相交链表
  * 编写一个程序，找到两个单链表相交的起始节点。
  * 在节点 c1 开始相交。
  *
