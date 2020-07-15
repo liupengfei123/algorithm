@@ -21,20 +21,20 @@ import java.util.Stack;
  */
 public class InorderTraversal {
 
-        public List<Integer> inorderTraversal(TreeNode root) {
-            List<Integer> result = new LinkedList<>();
-            traversal(root, result);
-            return result;
-        }
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> result = new LinkedList<>();
+        traversal(root, result);
+        return result;
+    }
 
-        private void traversal(TreeNode node, List<Integer> result) {
-            if (node == null) {
-                return;
-            }
-            traversal(node.left, result);
-            result.add(node.val);
-            traversal(node.right, result);
+    private void traversal(TreeNode node, List<Integer> result) {
+        if (node == null) {
+            return;
         }
+        traversal(node.left, result);
+        result.add(node.val);
+        traversal(node.right, result);
+    }
 
 
 

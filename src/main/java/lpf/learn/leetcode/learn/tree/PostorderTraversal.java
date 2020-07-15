@@ -21,20 +21,20 @@ import java.util.Stack;
  */
 public class PostorderTraversal {
 
-        public List<Integer> postorderTraversal(TreeNode root) {
-            List<Integer> result = new LinkedList<>();
-            traversal(root, result);
-            return result;
-        }
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> result = new LinkedList<>();
+        traversal(root, result);
+        return result;
+    }
 
-        private void traversal(TreeNode node, List<Integer> result) {
-            if (node == null) {
-                return;
-            }
-            traversal(node.left, result);
-            traversal(node.right, result);
-            result.add(node.val);
+    private void traversal(TreeNode node, List<Integer> result) {
+        if (node == null) {
+            return;
         }
+        traversal(node.left, result);
+        traversal(node.right, result);
+        result.add(node.val);
+    }
 
 
 
