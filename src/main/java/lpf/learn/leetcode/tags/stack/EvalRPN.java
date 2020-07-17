@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.learn.queue_stack;
+package lpf.learn.leetcode.tags.stack;
 
 import java.util.Deque;
 import java.util.LinkedList;

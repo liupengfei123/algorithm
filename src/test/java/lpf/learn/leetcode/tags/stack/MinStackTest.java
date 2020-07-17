@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.learn.queue_stack;
+package lpf.learn.leetcode.tags.stack;
 
 import org.junit.Assert;
 import org.junit.Test;
