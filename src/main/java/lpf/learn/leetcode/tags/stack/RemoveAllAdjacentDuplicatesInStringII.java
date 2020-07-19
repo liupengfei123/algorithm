@@ -73,9 +73,10 @@ public class RemoveAllAdjacentDuplicatesInStringII {
     private static class Pair {
         int cnt;
         char ch;
+
         public Pair(int cnt, char ch) {
             this.ch = ch;
             this.cnt = cnt;
         }
-    }
+
 }
