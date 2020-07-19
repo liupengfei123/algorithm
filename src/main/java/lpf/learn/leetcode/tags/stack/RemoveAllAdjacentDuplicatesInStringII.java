@@ -78,5 +78,5 @@ public class RemoveAllAdjacentDuplicatesInStringII {
             this.ch = ch;
             this.cnt = cnt;
         }
-
+    }
 }
