@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
 
-/**
+/** [279]完全平方数
  * 给定正整数 n，找到若干个完全平方数（比如 1, 4, 9, 16, ...）使得它们的和等于 n。你需要让组成和的完全平方数的个数最少。
  *
  * 示例 1:
@@ -18,7 +18,7 @@ import java.util.Set;
  * 输出: 2
  * 解释: 13 = 4 + 9.
  */
-public class NumSquares {
+public class PerfectSquares {
 
     public int numSquaresBFS(int n) {
         Set<Integer> used = new HashSet<>();

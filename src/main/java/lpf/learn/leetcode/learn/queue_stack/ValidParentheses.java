@@ -2,7 +2,7 @@ package lpf.learn.leetcode.learn.queue_stack;
 
 import java.util.Stack;
 
-/**
+/** [20]有效的括号
  * 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
  *
  * 有效字符串需满足：
@@ -30,7 +30,7 @@ import java.util.Stack;
  * 输入: "{[]}"
  * 输出: true
  */
-public class ValidBrackets {
+public class ValidParentheses {
 
     public boolean isValid(String s) {
         char[] chars = s.toCharArray();
