@@ -5,11 +5,10 @@ import lpf.learn.leetcode.learn.entity.TreeNode;
 import java.util.Deque;
 import java.util.LinkedList;
 
-/**
+/** [101]对称二叉树
  * 给定一个二叉树，检查它是否是镜像对称的。
  *
  * 例如，二叉树 [1,2,2,3,4,4,3] 是对称的。
- *
  *     1
  *    / \
  *   2   2
@@ -23,11 +22,10 @@ import java.util.LinkedList;
  *    \   \
  *    3    3
  *
- *
  * 进阶：
  * 你可以运用递归和迭代两种方法解决这个问题吗？
  */
-public class IsSymmetric {
+public class SymmetricTree {
     public boolean isSymmetric(TreeNode root) {
         if (root == null) {
             return true;
