@@ -7,7 +7,7 @@ public class NumSquaresTest {
 
     @Test
     public void test() {
-        NumSquares temp = new NumSquares();
+        PerfectSquares temp = new PerfectSquares();
 
         Assert.assertEquals(3, temp.numSquaresBFS(12));
         Assert.assertEquals(2, temp.numSquaresBFS(13));

@@ -7,7 +7,7 @@ public class OpenLockTest {
 
     @Test
     public void test() {
-        OpenLock temp = new OpenLock();
+        OpenTheLock temp = new OpenTheLock();
 
         Assert.assertEquals(6, temp.openLock(new String[]{"0201","0101","0102","1212","2002"}, "0202"));
 

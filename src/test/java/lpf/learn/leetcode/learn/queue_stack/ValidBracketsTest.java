@@ -9,7 +9,7 @@ public class ValidBracketsTest {
 
     @Test
     public void test() {
-        ValidBrackets temp = new ValidBrackets();
+        ValidParentheses temp = new ValidParentheses();
         assertTrue(temp.isValid("()"));
         assertTrue(temp.isValid("()[]{}"));
         assertFalse(temp.isValid("(]"));

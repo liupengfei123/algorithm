@@ -8,7 +8,7 @@ public class IsSymmetricTest {
 
     @Test
     public void test() {
-        IsSymmetric temp = new IsSymmetric();
+        SymmetricTree temp = new SymmetricTree();
         TreeNode root1 = new TreeNode(1);
         TreeNode left1 = new TreeNode(2);
         root1.left = left1;

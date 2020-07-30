@@ -17,7 +17,7 @@ public class HasPathSumTest {
      */
     @Test
     public void test() {
-        HasPathSum temp = new HasPathSum();
+        PathSum temp = new PathSum();
         TreeNode root1 = new TreeNode(5);
         TreeNode left1 = new TreeNode(4);
         root1.left = left1;

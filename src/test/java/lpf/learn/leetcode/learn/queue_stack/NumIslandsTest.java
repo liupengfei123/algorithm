@@ -7,7 +7,7 @@ public class NumIslandsTest {
 
     @Test
     public void test() {
-        NumIslands numIslands = new NumIslands(); // 设置长度为 3
+        NumberOfIslands numIslands = new NumberOfIslands(); // 设置长度为 3
 
         Assert.assertEquals(1, numIslands.numIslands(new char[][]{"11110".toCharArray(), "11010".toCharArray(), "11000".toCharArray(), "00000".toCharArray()}));
 
