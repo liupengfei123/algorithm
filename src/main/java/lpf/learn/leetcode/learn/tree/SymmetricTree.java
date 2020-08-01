@@ -1,6 +1,6 @@
 package lpf.learn.leetcode.learn.tree;
 
-import lpf.learn.leetcode.learn.entity.TreeNode;
+import lpf.learn.leetcode.entity.TreeNode;
 
 import java.util.Deque;
 import java.util.LinkedList;

@@ -1,6 +1,6 @@
 package lpf.learn.leetcode.tags.stack;
 
-import lpf.learn.leetcode.learn.entity.TreeNode;
+import lpf.learn.leetcode.entity.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

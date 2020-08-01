@@ -1,6 +1,6 @@
 package lpf.learn.leetcode.learn.linked_list;
 
-import lpf.learn.leetcode.learn.entity.ListNode;
+import lpf.learn.leetcode.entity.ListNode;
 
 /** 环形链表 II
  * 给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。

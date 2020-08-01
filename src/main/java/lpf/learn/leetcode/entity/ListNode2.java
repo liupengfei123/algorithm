@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.learn.entity;
+package lpf.learn.leetcode.entity;
 
 public class ListNode2 {
     public int val;

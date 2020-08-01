@@ -1,6 +1,6 @@
 package lpf.learn.leetcode.tags.tree;
 
-import lpf.learn.leetcode.learn.entity.TreeNode;
+import lpf.learn.leetcode.entity.TreeNode;
 import org.junit.Assert;
 import org.junit.Test;
 

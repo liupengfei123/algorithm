@@ -1,6 +1,6 @@
 package lpf.learn.leetcode.learn.linked_list;
 
-import lpf.learn.leetcode.learn.entity.ListNode;
+import lpf.learn.leetcode.entity.ListNode;
 
 /** 两数相加
  *

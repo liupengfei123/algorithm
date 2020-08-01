@@ -1,6 +1,6 @@
 package lpf.learn.leetcode.learn.linked_list;
 
-import lpf.learn.leetcode.learn.entity.ListNode;
+import lpf.learn.leetcode.entity.ListNode;
 
 /** 移除链表元素
  * 删除链表中等于给定值 val 的所有节点。

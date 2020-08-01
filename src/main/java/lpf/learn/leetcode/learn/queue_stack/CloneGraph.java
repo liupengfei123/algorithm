@@ -1,6 +1,6 @@
 package lpf.learn.leetcode.learn.queue_stack;
 
-import lpf.learn.leetcode.learn.entity.NodeQueue;
+import lpf.learn.leetcode.entity.NodeQueue;
 
 import java.util.ArrayList;
 import java.util.HashMap;

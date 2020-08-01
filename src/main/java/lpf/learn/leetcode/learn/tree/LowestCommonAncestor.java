@@ -1,6 +1,6 @@
 package lpf.learn.leetcode.learn.tree;
 
-import lpf.learn.leetcode.learn.entity.TreeNode;
+import lpf.learn.leetcode.entity.TreeNode;
 
 /**
  * 给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。

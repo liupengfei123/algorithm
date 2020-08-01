@@ -1,6 +1,6 @@
 package lpf.learn.leetcode.learn.linked_list;
 
-import lpf.learn.leetcode.learn.entity.NodeRandom;
+import lpf.learn.leetcode.entity.NodeRandom;
 
 import java.util.HashMap;
 import java.util.Map;

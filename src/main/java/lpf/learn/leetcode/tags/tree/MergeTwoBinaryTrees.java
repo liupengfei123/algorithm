@@ -1,6 +1,6 @@
 package lpf.learn.leetcode.tags.tree;
 
-import lpf.learn.leetcode.learn.entity.TreeNode;
+import lpf.learn.leetcode.entity.TreeNode;
 
 /** [617]合并二叉树
  *
