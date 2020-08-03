@@ -1,6 +1,7 @@
 package lpf.learn.leetcode.learn.tree;
 
 import lpf.learn.leetcode.entity.TreeNode;
+import lpf.learn.leetcode.tags.tree.BinaryTreeLevelOrderTraversal;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -9,11 +10,11 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-public class LevelOrderTest {
+public class BinaryTreeLevelOrderTraversalTest {
 
     @Test
     public void test() {
-        LevelOrder temp = new LevelOrder();
+        BinaryTreeLevelOrderTraversal temp = new BinaryTreeLevelOrderTraversal();
         TreeNode root = new TreeNode(3);
         root.left = new TreeNode(9);
         TreeNode right = new TreeNode(20);
