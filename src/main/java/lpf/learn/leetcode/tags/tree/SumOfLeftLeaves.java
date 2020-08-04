@@ -1,6 +1,6 @@
 package lpf.learn.leetcode.tags.tree;
 
-import lpf.learn.leetcode.learn.entity.TreeNode;
+import lpf.learn.leetcode.entity.TreeNode;
 
 /** [404]左叶子之和
  * 计算给定二叉树的所有左叶子之和。
