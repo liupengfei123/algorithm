@@ -3,8 +3,7 @@ package lpf.learn.leetcode.learn.queue_stack;
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**
- * 542. 01 矩阵
+/** 542. 01 矩阵
  *
  * 给定一个由 0 和 1 组成的矩阵，找出每个元素到最近的 0 的距离。
  * 两个相邻元素间的距离为 1 。
@@ -34,7 +33,7 @@ import java.util.Queue;
  * 给定矩阵中至少有一个元素是 0。
  * 矩阵中的元素只在四个方向上相邻: 上、下、左、右。
  */
-public class UpdateMatrix {
+public class Zero1Matrix {
 
     public int[][] updateMatrix(int[][] matrix) {
         if (matrix == null || matrix.length <= 0) {
