@@ -8,7 +8,7 @@ public class ReverseWordsTest {
 
     @Test
     public void reverseWordsTest(){
-        ReverseWords reverseWords = new ReverseWords();
+        ReverseWordsInAString reverseWords = new ReverseWordsInAString();
 
         Assert.assertEquals("blue is sky the", reverseWords.reverseWords("the sky is blue"));
         Assert.assertEquals("world! hello", reverseWords.reverseWords("  hello  world!  "));

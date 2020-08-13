@@ -1,8 +1,6 @@
 package lpf.learn.leetcode.learn.array;
 
-import java.util.Arrays;
-
-/**
+/** [5]最长回文子串
  * 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
  *
  * 示例 1：
@@ -14,7 +12,7 @@ import java.util.Arrays;
  * 输入: "cbbd"
  * 输出: "bb"
  */
-public class LongestPalindrome {
+public class LongestPalindromicSubstring {
 
     public String longestPalindrome(String s) {
         return dynamicProgramming(s);
@@ -27,9 +25,6 @@ public class LongestPalindrome {
      * 思路如果一个字符串是回文字符串，那么去掉首尾的两个字符之后也是回文字符串。
      * P(i,i)=true
      * P(i,i+1)=(Si ==Si+1)
-     * ​
-     * @param s
-     * @return
      */
     private String dynamicProgramming(String s) {
         if (s == null || s.isEmpty()) {
@@ -64,8 +59,6 @@ public class LongestPalindrome {
 
     /**
      * 中心扩展算法
-     * @param s
-     * @return
      */
     private String expandAroundCenter(String s) {
         if (s == null || s.length() < 1) return "";

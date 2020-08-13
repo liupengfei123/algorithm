@@ -1,6 +1,6 @@
 package lpf.learn.leetcode.learn.array;
 
-/**
+/** 面试题 01.07 旋转矩阵
  * 给你一幅由 N × N 矩阵表示的图像，其中每个像素的大小为 4 字节。请你设计一种算法，将图像旋转 90 度。
  * 不占用额外内存空间能否做到？
  *
@@ -34,7 +34,7 @@ package lpf.learn.leetcode.learn.array;
  *   [16, 7,10,11]
  * ]
  */
-public class Rotate {
+public class RotateMatrixLcci {
 
     public void rotate(int[][] matrix) {
         if (matrix == null || matrix.length == 0){

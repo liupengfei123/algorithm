@@ -1,9 +1,10 @@
 package lpf.learn.leetcode.learn.array;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
+/** [面试题 01.08]零矩阵
  * 编写一种算法，若M × N矩阵中某个元素为0，则将其所在的行与列清零。
  *
  * 示例 1：
@@ -34,7 +35,7 @@ import java.util.Set;
  *   [0,3,1,0]
  * ]
  */
-public class SetZeroes {
+public class ZeroMatrixLcci {
 
     public void setZeroes(int[][] matrix) {
         if (matrix == null || matrix.length == 0) {
@@ -53,9 +54,7 @@ public class SetZeroes {
             }
         }
         for (Integer x : xSet) {
-            for (int j = 0; j < matrix[x].length; j++) {
-                matrix[x][j] = 0;
-            }
+            Arrays.fill(matrix[x], 0);
         }
         for (Integer y : ySet) {
             for (int i = 0; i < matrix.length; i++) {

@@ -8,7 +8,7 @@ public class LongestPalindromeTest {
 
     @Test
     public void longestPalindromeTest(){
-        LongestPalindrome longestPalindrome = new LongestPalindrome();
+        LongestPalindromicSubstring longestPalindrome = new LongestPalindromicSubstring();
 
 
         Assert.assertEquals("a", longestPalindrome.longestPalindrome("a"));
