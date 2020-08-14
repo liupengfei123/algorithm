@@ -17,7 +17,7 @@ public class HasCycleTest {
         listNode3.next = listNode4;
         listNode4.next = listNode2;
 
-        HasCycle temp = new HasCycle();
+        LinkedListCycle temp = new LinkedListCycle();
         Assert.assertTrue(temp.hasCycle(listNode1));
     }
 
@@ -28,14 +28,14 @@ public class HasCycleTest {
         listNode1.next = listNode2;
         listNode2.next = listNode1;
 
-        HasCycle temp = new HasCycle();
+        LinkedListCycle temp = new LinkedListCycle();
         Assert.assertTrue(temp.hasCycle(listNode1));
     }
 
     @Test
     public void test3() {
         ListNode listNode1 = new ListNode(1);
-        HasCycle temp = new HasCycle();
+        LinkedListCycle temp = new LinkedListCycle();
         Assert.assertFalse(temp.hasCycle(listNode1));
     }
 

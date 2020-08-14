@@ -2,7 +2,7 @@ package lpf.learn.leetcode.learn.linked_list;
 
 import lpf.learn.leetcode.entity.ListNode;
 
-/** 回文链表
+/** [234]回文链表
  * 请判断一个链表是否为回文链表。
  *
  * 示例 1:
@@ -15,7 +15,7 @@ import lpf.learn.leetcode.entity.ListNode;
  * 进阶：
  * 你能否用 O(n) 时间复杂度和 O(1) 空间复杂度解决此题？
  */
-public class IsPalindrome {
+public class PalindromeLinkedList {
 
     public boolean isPalindrome(ListNode head) {
         if (head == null) return true;

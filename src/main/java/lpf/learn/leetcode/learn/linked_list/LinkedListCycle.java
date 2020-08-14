@@ -2,8 +2,7 @@ package lpf.learn.leetcode.learn.linked_list;
 
 import lpf.learn.leetcode.entity.ListNode;
 
-/** 环形链表
- *
+/** [141]环形链表
  * 给定一个链表，判断链表中是否有环。
  * 为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。
  *
@@ -25,7 +24,7 @@ import lpf.learn.leetcode.entity.ListNode;
  * 进阶：
  * 你能用 O(1)（即，常量）内存解决此问题吗？
  */
-public class HasCycle {
+public class LinkedListCycle {
     public boolean hasCycle(ListNode head) {
         ListNode fast = head;
         ListNode slow = head;
