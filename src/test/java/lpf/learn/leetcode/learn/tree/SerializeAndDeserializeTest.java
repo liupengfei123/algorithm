@@ -7,7 +7,7 @@ public class SerializeAndDeserializeTest {
 
     @Test
     public void test() {
-        SerializeAndDeserialize temp = new SerializeAndDeserialize();
+        SerializeAndDeserializeBinaryTree temp = new SerializeAndDeserializeBinaryTree();
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
         TreeNode right = new TreeNode(3);

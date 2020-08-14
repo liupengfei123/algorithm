@@ -1,7 +1,7 @@
 package lpf.learn.leetcode.tags.tree;
 
 import lpf.learn.leetcode.entity.TreeNode;
-import lpf.learn.leetcode.learn.tree.SerializeAndDeserialize;
+import lpf.learn.leetcode.learn.tree.SerializeAndDeserializeBinaryTree;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
@@ -12,7 +12,7 @@ public class CheckCompletenessOfABinaryTreeTest {
     @Test
     public void test1() {
         CheckCompletenessOfABinaryTree temp = new CheckCompletenessOfABinaryTree();
-        SerializeAndDeserialize deserialize = new SerializeAndDeserialize();
+        SerializeAndDeserializeBinaryTree deserialize = new SerializeAndDeserializeBinaryTree();
 
         TreeNode root = deserialize.deserialize("1,2,3,4,5,6");
         assertTrue(temp.isCompleteTree(root));
@@ -20,7 +20,7 @@ public class CheckCompletenessOfABinaryTreeTest {
     @Test
     public void test2() {
         CheckCompletenessOfABinaryTree temp = new CheckCompletenessOfABinaryTree();
-        SerializeAndDeserialize deserialize = new SerializeAndDeserialize();
+        SerializeAndDeserializeBinaryTree deserialize = new SerializeAndDeserializeBinaryTree();
 
         TreeNode root = deserialize.deserialize("1,2,3,4,5,null,7");
         assertFalse(temp.isCompleteTree(root));
