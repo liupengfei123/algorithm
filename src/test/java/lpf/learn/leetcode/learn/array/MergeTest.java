@@ -10,8 +10,8 @@ public class MergeTest {
     public void mergeTest(){
         Merge merge = new Merge();
 
-        Assert.assertEquals(new int[][]{{1,6},{8,10},{15,18}}, merge.merge(new int[][]{{1,3},{2,6},{8,10},{15,18}}));
+        Assert.assertArrayEquals(new int[][]{{1,6},{8,10},{15,18}}, merge.merge(new int[][]{{1,3},{2,6},{8,10},{15,18}}));
 
-        Assert.assertEquals(new int[][]{{1,5}}, merge.merge(new int[][]{{1,4},{4,5}}));
+        Assert.assertArrayEquals(new int[][]{{1,5}}, merge.merge(new int[][]{{1,4},{4,5}}));
     }
 }
