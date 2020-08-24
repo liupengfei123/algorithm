@@ -33,10 +33,19 @@ import lpf.learn.leetcode.entity.TreeNode;
 public class HouseRobberIii {
 
     public int rob(TreeNode root) {
-        return 0;
+        return help(root, true);
     }
 
-    private int traversal(TreeNode node) {
-        return 0;
+    private int help(TreeNode node, boolean use) {
+        if (node == null) {
+            return 0;
+        }
+
+        if (use) {
+            return Math.max(help(node.left, true) + help(node.right, true)
+                    ,  help(node.left, false) + help(node.right, false) + node.val);
+        } else {
+            return help(node.left, true) + help(node.right, true);
+        }
     }
 }
