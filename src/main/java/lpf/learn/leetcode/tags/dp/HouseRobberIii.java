@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.tags.tree;
+package lpf.learn.leetcode.tags.dp;
 
 import lpf.learn.leetcode.entity.TreeNode;
 
