@@ -32,7 +32,28 @@ import lpf.learn.leetcode.entity.TreeNode;
  */
 public class HouseRobberIii {
 
-    public int rob(TreeNode root) {
+    public  int rob(TreeNode root) {
+        //res[0]代表偷当前结点,res[1]代表不偷当前结点
+        int[] res = dfs(root);
+        return Math.max(res[0], res[1]);
+    }
+    private int[] dfs(TreeNode root) {
+        if (root == null) {
+            return new int[2];
+        }
+        int[] res = new int[2];
+        int[] leftRes = dfs(root.left);
+        int[] rightRes = dfs(root.right);
+        //用当前结点
+        res[0] = root.val + leftRes[1] + rightRes[1];
+        //不用当前结点,直接加上左右子结点最大的状态即可,因为当前结点没有用,所有不用担心子结点用不用
+        res[1] = Math.max(leftRes[0], leftRes[1]) + Math.max(rightRes[0], rightRes[1]);
+        return res;
+    }
+
+
+
+    public int rob2(TreeNode root) {
         return help(root, true);
     }
 
