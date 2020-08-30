@@ -33,7 +33,7 @@ import lpf.learn.leetcode.entity.TreeNode;
 public class HouseRobberIii {
 
     public  int rob(TreeNode root) {
-        //res[0]代表偷当前结点,res[1]代表不偷当前结点
+        //res[0]代表偷当前结点,res[1] 代表不偷当前结点
         int[] res = dfs(root);
         return Math.max(res[0], res[1]);
     }
