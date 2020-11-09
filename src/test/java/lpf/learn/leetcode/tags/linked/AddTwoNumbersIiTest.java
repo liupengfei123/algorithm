@@ -1,30 +1,29 @@
-package lpf.learn.leetcode.tags.hash;
+package lpf.learn.leetcode.tags.linked;
 
 import lpf.learn.leetcode.learn.linked_list.SerializeAndDeserializeBinaryLinked;
-import lpf.learn.leetcode.tags.linked.PartitionList;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class PartitionListTest {
+public class AddTwoNumbersIiTest {
     @Test
     public void test1(){
-        PartitionList test = new PartitionList();
+        AddTwoNumbersIi test = new AddTwoNumbersIi();
         SerializeAndDeserializeBinaryLinked temp = new SerializeAndDeserializeBinaryLinked();
-        Assert.assertEquals(temp.deserialize("1,2,2,4,3,5"), test.partition(temp.deserialize("1,4,3,2,5,2"), 3));
+        Assert.assertEquals(temp.deserialize("7,8,0,7"), test.addTwoNumbers(temp.deserialize("7,2,4,3"), temp.deserialize("5,6,4")));
     }
 
     @Test
     public void test2(){
-        PartitionList test = new PartitionList();
+        ReverseLinkedListIi test = new ReverseLinkedListIi();
         SerializeAndDeserializeBinaryLinked temp = new SerializeAndDeserializeBinaryLinked();
-        Assert.assertEquals(temp.deserialize("1,4,3,2,5,2"), test.partition(temp.deserialize("1,4,3,2,5,2"), 1));
+        Assert.assertEquals(temp.deserialize("6,5,4,3,2,1"), test.reverseBetween(temp.deserialize("1,2,3,4,5,6"), 1,6));
     }
 
     @Test
     public void test3(){
-        PartitionList test = new PartitionList();
+        ReverseLinkedListIi test = new ReverseLinkedListIi();
         SerializeAndDeserializeBinaryLinked temp = new SerializeAndDeserializeBinaryLinked();
-        Assert.assertEquals(temp.deserialize("1,2,2,4,4,3,5"), test.partition(temp.deserialize("4,1,4,3,2,5,2"), 3));
+        Assert.assertEquals(temp.deserialize("1,2,3,4,5,6"), test.reverseBetween(temp.deserialize("1,2,3,4,5,6"), 1,1));
     }
 
     @Test

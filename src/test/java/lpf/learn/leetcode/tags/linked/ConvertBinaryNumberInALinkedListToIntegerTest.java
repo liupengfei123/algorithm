@@ -1,7 +1,6 @@
-package lpf.learn.leetcode.tags.hash;
+package lpf.learn.leetcode.tags.linked;
 
 import lpf.learn.leetcode.learn.linked_list.SerializeAndDeserializeBinaryLinked;
-import lpf.learn.leetcode.tags.linked.ConvertBinaryNumberInALinkedListToInteger;
 import org.junit.Assert;
 import org.junit.Test;
 
