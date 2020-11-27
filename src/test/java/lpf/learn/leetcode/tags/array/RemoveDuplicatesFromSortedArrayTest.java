@@ -1,14 +1,14 @@
-package lpf.learn.leetcode.learn.array;
+package lpf.learn.leetcode.tags.array;
 
 
 import org.junit.Assert;
 import org.junit.Test;
 
-public class RemoveDuplicatesTest {
+public class RemoveDuplicatesFromSortedArrayTest {
 
     @Test
     public void removeDuplicatesTest(){
-        RemoveDuplicates removeDuplicates = new RemoveDuplicates();
+        RemoveDuplicatesFromSortedArray removeDuplicates = new RemoveDuplicatesFromSortedArray();
 
         Assert.assertEquals(2, removeDuplicates.removeDuplicates(new int[]{1,1,2}));
 
