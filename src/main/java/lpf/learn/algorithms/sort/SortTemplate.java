@@ -11,6 +11,10 @@ import edu.princeton.cs.algs4.StdOut;
 public abstract class SortTemplate {
     public abstract void sort(Comparable[] a);
 
+    /**
+     *  比较两个数大小
+     * @return true : v 比 w 小， false反之
+     */
     protected boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
     }
