@@ -19,6 +19,13 @@ import java.util.Arrays;
  */
 public class SingleNumber {
     public int singleNumber(int[] nums) {
+        int result = 0;
+        for (int num : nums) {
+            result ^= num;
+        }
+        return result;
+    }
+    public int singleNumber2(int[] nums) {
         //排序之后 只出现了一次的元素 一定处于奇数的索引上
         Arrays.sort(nums);
         int sum = 0;
