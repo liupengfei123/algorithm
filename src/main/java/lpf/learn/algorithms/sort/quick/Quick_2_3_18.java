@@ -29,12 +29,26 @@ public class Quick_2_3_18 extends Quick {
         if ((hi - lo + 1) < 3)
             return lo;
 
-        Integer[] b={lo,lo+1,lo+2};
-        ////使用插入排序法排序新数组b,按原数组的值进行排序。排序后的结果是原数组中小中大值对应的索引
-        for(int i=0;i<2;i++)
-            for(int j=i+1;j>0;j--)
-                if (less(a[b[j]],a[b[j-1]])) exch(b,j,j-1);
-        return b[1];
+        int v1 = lo;
+        int v2 = (hi - lo) / 2 + lo;
+        int v3 = hi;
+
+        if (less(a[v2], a[v1])) {
+            v1 = v1 ^ v2;
+            v2 = v1 ^ v2;
+            v1 = v1 ^ v2;
+        }
+        if (less(a[v3], a[v2])) {
+            v3 = v3 ^ v2;
+            v2 = v3 ^ v2;
+            v3 = v3 ^ v2;
+        }
+        if (less(a[v2], a[v1])) {
+            v1 = v1 ^ v2;
+            v2 = v1 ^ v2;
+            v1 = v1 ^ v2;
+        }
+        return v2;
     }
 
 }
