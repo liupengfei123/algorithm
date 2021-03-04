@@ -1,6 +1,5 @@
 package lpf.learn.leetcode.tags.dp;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -62,18 +61,15 @@ public class UniquePaths {
 
 
     public int uniquePaths(int m, int n) {
-        int[][] array = new int[m][n];
-        Arrays.fill(array[m - 1], 1);
-        for (int i = 0; i < m; i++) {
-            array[i][n - 1] = 1;
-        }
+        int[] array = new int[n + 1];
+        array[n - 1] = 1;
 
-        for (int j = n - 2; j >= 0; j--) {
-            for (int i = m - 2; i >= 0; i--) {
-                array[i][j] = array[i][j + 1] + array[i + 1][j];
+        for (int i = m - 1; i >= 0; i--) {
+            for (int j = n - 1; j >= 0; j--) {
+                array[j] = array[j + 1] + array[j];
             }
         }
-        return array[0][0];
+        return array[0];
     }
 
 
