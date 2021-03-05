@@ -44,10 +44,44 @@ import java.util.Map;
 public class DecodeWays {
 
 
+    public int numDecodings(String s) {
+        char[] chars = s.toCharArray();
+        int[] array = new int[s.length() + 1];
+        array[array.length - 1] = 1;
+        array[array.length - 2] = check2(chars, s.length() - 1, true);
+
+        for (int i = s.length() - 2; i >= 0; i--) {
+            array[i] = check2(chars, i, true) * array[i + 1] + check2(chars, i, false) * array[i + 2];
+        }
+        return array[0];
+    }
+
+    private int check2(char[] chars, int start, boolean single){
+        if (chars[start] == '0') {
+            return 0;
+        }
+        if (single) {
+            return 1;
+        }
+        if (chars[start] > '2') {
+            return 0;
+        }
+        if (chars[start] == '2') {
+            if (chars[start + 1] <= '6') {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+        return 1;
+    }
+
+
+
     /**
      * f(i, x) = f(i, i) * f(i+1, x) + f(i, i+1) * f(i+2, x)
      */
-    public int numDecodings(String s) {
+    public int numDecodings2(String s) {
         Map<Integer, Integer> map = new HashMap<>();
 
         return help(s.toCharArray(), 0, map);
