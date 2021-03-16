@@ -24,8 +24,10 @@ public class IntegerBreak {
         }
         int[] dp = new int[n + 1];
         dp[1] = 1;
-        for (int i = 2; i <= n; i++) {
-            dp[i] = i;
+        dp[2] = 2;
+        dp[3] = 3;
+
+        for (int i = 4; i <= n; i++) {
             for (int j = i / 2; j < i; j++) {
                 dp[i] = Math.max(dp[i], dp[j] * dp[i - j]);
             }
