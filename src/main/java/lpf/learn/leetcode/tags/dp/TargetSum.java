@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.learn.queue_stack;
+package lpf.learn.leetcode.tags.dp;
 
 /**
  * 494. 目标和
@@ -22,7 +22,7 @@ package lpf.learn.leetcode.learn.queue_stack;
  * 初始的数组的和不会超过 1000 。
  * 保证返回的最终结果能被 32 位整数存下。
  */
-public class FindTargetSumWays {
+public class TargetSum {
     public int findTargetSumWays(int[] nums, int S) {
         //我们用 dp[i][j] 表示用数组中的前 i 个元素，组成和为 j 的方案数。考虑第 i 个数 nums[i]，它可以被添加 + 或 -，因此状态转移方程如下
         // dp[i][j] = dp[i - 1][j - nums[i]] + dp[i - 1][j + nums[i]]

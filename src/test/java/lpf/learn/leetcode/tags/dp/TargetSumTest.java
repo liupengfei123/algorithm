@@ -1,16 +1,15 @@
-package lpf.learn.leetcode.learn.queue_stack;
+package lpf.learn.leetcode.tags.dp;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-public class FindTargetSumWaysTest {
+public class TargetSumTest {
 
     @Test
     public void test() {
-        FindTargetSumWays temp = new FindTargetSumWays();
+        TargetSum temp = new TargetSum();
 
         Assert.assertEquals(5, temp.findTargetSumWays(new int[]{1, 1, 1, 1, 1}, 3));
-
     }
 
 
