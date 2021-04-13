@@ -31,19 +31,4 @@ public class CheapestFlightsWithinKStopsTest {
         int[][] flights = new int[][]{{0,1,200},{1,2,300},{0,2,500},{1,3,100},{2,3,700}};
         Assert.assertEquals(300, test.findCheapestPrice(4, flights, 0, 3, 3));
     }
-
-    @Test
-    public void test5(){
-        ArithmeticSlices test = new ArithmeticSlices();
-        Assert.assertEquals(3, test.numberOfArithmeticSlices(new int[]{7, 7, 7, 7}));
-    }
-
-    @Test
-    public void test6(){
-        ArithmeticSlices test = new ArithmeticSlices();
-        Assert.assertEquals(0, test.numberOfArithmeticSlices(new int[]{1, 1, 2, 5, 7}));
-    }
-
-
-
 }
