@@ -35,4 +35,19 @@ public class DominoAndTrominoTiling {
         }
         return (int) dp[0];
     }
+
+
+    public int numTilings2(int N) {
+        long MOD =  1_000_000_007;
+        long[] dp = new long[]{1, 0, 0, 1};
+        for (int i = 1; i < N; ++i) {
+            long[] ndp = new long[4];
+            ndp[0] = dp[3];
+            ndp[1] = (dp[0] + dp[2]) % MOD;
+            ndp[2] = (dp[0] + dp[1]) % MOD;
+            ndp[3] = (dp[0] + dp[1] + dp[2] + dp[3]) % MOD;
+            dp = ndp;
+        }
+        return (int) dp[3];
+    }
 }
