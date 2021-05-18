@@ -27,4 +27,12 @@ public class MaximumDistanceBetweenAPairOfValuesTest {
         MaximumDistanceBetweenAPairOfValues test = new MaximumDistanceBetweenAPairOfValues();
         Assert.assertEquals(0, test.maxDistance(new int[]{5,4}, new int[]{3,2}));
     }
+
+    @Test
+    public void test5(){
+        MaximumDistanceBetweenAPairOfValues test = new MaximumDistanceBetweenAPairOfValues();
+        Assert.assertEquals(1, test.maxDistance(new int[]{2}, new int[]{2,2,1}));
+    }
+
+
 }
