@@ -22,8 +22,8 @@ import java.util.stream.IntStream;
  * 输出：49
  *
  * 提示：
- * 1 <= nums.length <= 105
- * 1 <= nums[i] <= 105
+ * 1 <= nums.length <= 10^5
+ * 1 <= nums[i] <= 10^5
  * @author liupf
  * @date 2021-05-15 23:26
  */
@@ -46,10 +46,11 @@ public class SumOfFlooredPairs {
             if (counts[i] == 0) {
                 continue;
             }
-            int j = i, value;
+            int j = i;
+            long value;
             for (; j < length; j += i) {
-                value = ((preSum[Math.min(j + i, length) - 1] - preSum[j - 1]) * (j / i)  * counts[i]) % mod;
-                result = (result + value) % mod;
+                value = ((long)(preSum[Math.min(j + i, length) - 1] - preSum[j - 1]) * (j / i)  * counts[i]) % mod;
+                result = (int) ((result + value) %mod);
             }
         }
         return result;
