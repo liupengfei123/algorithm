@@ -34,4 +34,9 @@ public class MinimumSpeedtoArriveonTimeTest {
         Assert.assertEquals(10000000, test.minSpeedOnTime(new int[]{1,1,100000}, 2.01));
     }
 
+    @Test
+    public void test6(){
+        MinimumSpeedtoArriveonTime test = new MinimumSpeedtoArriveonTime();
+        Assert.assertEquals(-1, test.minSpeedOnTime(new int[]{1,1}, 1.0));
+    }
 }

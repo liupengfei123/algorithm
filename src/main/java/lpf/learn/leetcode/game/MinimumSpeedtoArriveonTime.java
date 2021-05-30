@@ -54,7 +54,7 @@ public class MinimumSpeedtoArriveonTime {
         int right = max;
         if (hour < dist.length) {
             double temp = hour - dist.length + 1;
-            if (temp < 0) {
+            if (temp <= 0) {
                 return -1;
             }
             double v = dist[dist.length - 1] / temp;
