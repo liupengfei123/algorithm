@@ -47,30 +47,32 @@ public class ProcessTasksUsingServers {
 
     public int[] assignTasks(int[] servers, int[] tasks) {
         int length = tasks.length;
-        Map<Integer,List<int[]>> timed = new HashMap<>(length);
 
-        PriorityQueue<int[]> minHeap = new PriorityQueue<>(servers.length, (a, b) -> a[0] - b[0] == 0 ? a[1] - b[1] : a[0] - b[0]);
+        // weight，index，end
+        PriorityQueue<int[]> ready  = new PriorityQueue<>(servers.length, (a, b) -> a[0] - b[0] == 0 ? a[1] - b[1] : a[0] - b[0]);
+        PriorityQueue<int[]> used = new PriorityQueue<>(servers.length, Comparator.comparing(a -> a[2]));
+
         for (int i = 0; i < servers.length; i++) {
-            minHeap.add(new int[]{servers[i], i});
+            ready.add(new int[]{servers[i], i, 0});
         }
 
         int[] result = new int[length];
-        for (int i = 0, time = 0; i < length; time++) {
-            if (timed.get(time) != null) {
-                for (int[] ints : timed.get(time)) {
-                    minHeap.add(ints);
-                }
-                timed.remove(time);
+        for (int i = 0, time = 0; i < length; i++) {
+            time = Math.max(time, i);
+
+            while (!used.isEmpty() && used.peek()[2] <= time) {
+                ready.offer(used.poll());
             }
-            int[] poll = minHeap.poll();
-            if (poll == null) {
+            if (ready.isEmpty()) {
+                time = used.peek()[2];
+                i--;
                 continue;
             }
 
+            int[] poll = ready.poll();
             result[i] = poll[1];
-            timed.putIfAbsent(time + tasks[i], new ArrayList<>());
-            timed.get(time + tasks[i]).add(poll);
-            i++;
+            poll[2] = time + tasks[i];
+            used.offer(poll);
         }
         return result;
     }
