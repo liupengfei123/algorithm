@@ -14,7 +14,31 @@ package lpf.learn.leetcode.tags.array;
  * 输入的数组可能包含重复元素 ，所以升序的意思是<=。
  */
 public class ShortestUnsortedContinuousSubarray {
+
     public int findUnsortedSubarray(int[] nums) {
+        int n = nums.length;
+        int maxn = Integer.MIN_VALUE, right = -1;
+        int minn = Integer.MAX_VALUE, left = -1;
+        for (int i = 0; i < n; i++) {
+            // 从左往右 找到最后一个下降的
+            if (maxn > nums[i]) {
+                right = i;
+            } else {
+                maxn = nums[i];
+            }
+
+            // 从右往左 找到最后一个上升的
+            if (minn < nums[n - i - 1]) {
+                left = n - i - 1;
+            } else {
+                minn = nums[n - i - 1];
+            }
+        }
+        return right == -1 ? 0 : right - left + 1;
+    }
+
+
+    public int findUnsortedSubarray2(int[] nums) {
         int left = nums.length;
         int pre = nums[0];
         for (int i = 0; i < nums.length; i++) {
