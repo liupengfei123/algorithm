@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.tags.array;
+package lpf.learn.leetcode.tags.dp;
 
 import java.util.LinkedList;
 
