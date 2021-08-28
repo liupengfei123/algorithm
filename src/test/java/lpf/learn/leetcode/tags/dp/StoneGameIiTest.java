@@ -7,7 +7,7 @@ public class StoneGameIiTest {
     @Test
     public void test1(){
         StoneGameIi test = new StoneGameIi();
-        Assert.assertEquals(3, test.stoneGameII(new int[]{1, 2, 3, 4}));
+        Assert.assertEquals(5, test.stoneGameII(new int[]{1, 2, 3, 4}));
     }
 
     @Test

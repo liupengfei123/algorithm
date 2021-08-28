@@ -1,52 +1,39 @@
 package lpf.learn.leetcode.tags.dp;
 
-import org.junit.Assert;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class GenerateParenthesesTest {
     @Test
     public void test1(){
-        ArrayList<Object> list = new ArrayList<>();
-        list.add("()");
+        String[] expected = {"()"};
 
         GenerateParentheses test = new GenerateParentheses();
-        Assert.assertEquals(list, test.generateParenthesis(1));
+        MatcherAssert.assertThat(test.generateParenthesis(1), Matchers.containsInAnyOrder(expected));
     }
 
     @Test
     public void test2(){
-        ArrayList<Object> list = new ArrayList<>();
-        list.add("()()");
-        list.add("(())");
+        String[] expected = {"()()", "(())"};
 
         GenerateParentheses test = new GenerateParentheses();
-        Assert.assertEquals(list, test.generateParenthesis(2));
+        MatcherAssert.assertThat(test.generateParenthesis(2), Matchers.containsInAnyOrder(expected));
     }
 
     @Test
     public void test3(){
-        ArrayList<Object> list = new ArrayList<>();
-        list.add("()()()");
-        list.add("()(())");
-        list.add("(()())");
-        list.add("((()))");
-        list.add("(())()");
+        String[] expected = {"()()()", "()(())", "(()())", "((()))", "(())()"};
 
         GenerateParentheses test = new GenerateParentheses();
-        Assert.assertEquals(list, test.generateParenthesis(3));
+        MatcherAssert.assertThat(test.generateParenthesis(3), Matchers.containsInAnyOrder(expected));
     }
 
     @Test
     public void test4(){
-        String[] strings = {"()()()()", "()()(())", "()(())()", "()(()())", "()((()))", "(())()()", "(())(())", "(()())()", "((()))()", "(()()())", "(()(()))", "((())())", "((()()))", "(((())))"};
-
-        List<String> list = Arrays.asList(strings);
+        String[] expected = {"()()()()", "()()(())", "()(())()", "()(()())", "()((()))", "(())()()", "(())(())", "(()())()", "((()))()", "(()()())", "(()(()))", "((())())", "((()()))", "(((())))"};
 
         GenerateParentheses test = new GenerateParentheses();
-        Assert.assertEquals(list, test.generateParenthesis(4));
+        MatcherAssert.assertThat(test.generateParenthesis(4), Matchers.containsInAnyOrder(expected));
     }
 }

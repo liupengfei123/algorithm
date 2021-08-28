@@ -25,6 +25,6 @@ public class DeleteAndEarnTest {
     @Test
     public void test4(){
         DeleteAndEarn test = new DeleteAndEarn();
-        Assert.assertEquals(9, test.deleteAndEarn(new int[]{2, 2, 3, 3, 3, 4, 7}));
+        Assert.assertEquals(16, test.deleteAndEarn(new int[]{2, 2, 3, 3, 3, 4, 7}));
     }
 }
