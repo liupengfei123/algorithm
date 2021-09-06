@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.tags.BinarySearch;
+package lpf.learn.leetcode.tags.binarysearch;
 
 /** [1482]制作 m 束花所需的最少天数
  *  给你一个整数数组 bloomDay，以及两个整数 m 和 k 。
