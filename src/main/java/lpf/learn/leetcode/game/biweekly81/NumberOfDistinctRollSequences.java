@@ -1,5 +1,7 @@
 package lpf.learn.leetcode.game.biweekly81;
 
+import java.util.Arrays;
+
 /** [2318] 不同骰子序列的数目
  *
  *<p>给你一个整数&nbsp;<code>n</code>&nbsp;。你需要掷一个 6 面的骰子&nbsp;<code>n</code>&nbsp;次。请你在满足以下要求的前提下，求出 <strong>不同</strong>&nbsp;骰子序列的数目：</p>
@@ -35,4 +37,36 @@ package lpf.learn.leetcode.game.biweekly81;
  * </ul>
  */
 public class NumberOfDistinctRollSequences {
+    public int distinctSequences(int n) {
+        int mod = 1000_000_007;
+        int[][] dp = new int[n + 1][7];
+        Arrays.fill(dp[1], 1);
+        dp[1][0] = 0;
+
+        int[][] needs = new int[][]{{},
+                {2,3,4,5,6},
+                {1,3,5},
+                {1,2,4,5},
+                {1,3,5},
+                {1,2,3,4,6},
+                {1,5}
+        };
+
+        for (int i = 2; i <= n; i++) {
+            for (int j = 1; j <= 6; j++) {
+                for (int z : needs[j]) {
+                    // 因为少了 dp[i - 3][z] 的数据，所有在下方 多加 dp[i - 2][j]
+                    dp[i][j] = (dp[i][j] + (dp[i - 1][z] - dp[i - 2][j]) % mod) % mod;
+                }
+                if (i > 3) {
+                    dp[i][j] = (dp[i][j] + dp[i - 2][j]) % mod;
+                }
+            }
+        }
+        int result = 0;
+        for (int j = 1; j <= 6; j++) {
+            result = (dp[n][j] + result) % mod;
+        }
+        return (result + mod) % mod;
+    }
 }
