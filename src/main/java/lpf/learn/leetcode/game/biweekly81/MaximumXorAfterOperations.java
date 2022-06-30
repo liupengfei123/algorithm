@@ -27,4 +27,11 @@ package lpf.learn.leetcode.game.biweekly81;
  * </ul>
  */
 public class MaximumXorAfterOperations {
+    public int maximumXOR(int[] nums) {
+        int value = 0;
+        for (int num : nums) {
+            value |= num;
+        }
+        return value;
+    }
 }
