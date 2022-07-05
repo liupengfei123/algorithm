@@ -13,28 +13,33 @@ public class ETetrahedron {
     public static PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
     public static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
+    public static int mod = 1000000007;
+
     public static void main(String[] args) throws IOException {
-        int mod = 1000000007;
         int n = Integer.parseInt(in.readLine());
 
+        out.print((run(n) + mod) % mod);
+        out.close();
+    }
+
+    private static int run(int n) {
         int dV = 1;
         int oV = 0;
 
         for (int i = 1; i <= n; i++) {
-            int ndv = 0;
-            ndv = (ndv + oV) % mod;
-            ndv = (ndv + oV) % mod;
-            ndv = (ndv + oV) % mod;
+            int nDV = 0;
+            nDV = (nDV + oV) % mod;
+            nDV = (nDV + oV) % mod;
+            nDV = (nDV + oV) % mod;
 
-            int nov = 0;
-            nov = (nov + dV) % mod;
-            nov = (nov + oV) % mod;
-            nov = (nov + oV) % mod;
+            int nOV = 0;
+            nOV = (nOV + dV) % mod;
+            nOV = (nOV + oV) % mod;
+            nOV = (nOV + oV) % mod;
 
-            dV = ndv;
-            oV = nov;
+            dV = nDV;
+            oV = nOV;
         }
-        out.print((dV + mod) % mod);
-        out.close();
+        return dV;
     }
 }
