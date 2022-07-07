@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  *  https://codeforces.com/problemset/problem/166/E
  */
-public class ETetrahedron {
+public class E166 {
     public static Scanner sc = new Scanner(System.in);
     public static int mod = 1000000007;
 
