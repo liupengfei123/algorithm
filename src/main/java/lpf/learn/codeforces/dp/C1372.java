@@ -24,30 +24,22 @@ public class C1372 {
     }
 
     private static int run(int[] array) {
-        int result = 0;
-        int right = -1;  //错误区间右边界
-        int left = array.length; //错误区间右边界
-        boolean status = false; // 错误区间内是否存在 位置正确的
+        int right = array.length - 1;  //错误区间右边界
+        int left = 0; //错误区间左边界
 
-        for (int i = array.length - 1; i >= 0; i--) {
+        while (right >= 0 && right + 1 == array[right]) right--;
+
+        if (right < 0) {
+            return 0;
+        }
+
+        while (left < array.length && left + 1 == array[left]) left++;
+
+        for (int i = left; i <= right; i++) {
             if (i + 1 == array[i]) {
-                if (right != -1) {
-                    status = true;
-                }
-                continue;
-            }
-
-            if (right == -1) {
-                right = i;
-            }
-            left = Math.min(left, array[i]);
-            if (left == i + 1) {
-                result = status ? 2 : 1;
-                if (result == 2) {
-                    return result;
-                }
+                return 2;
             }
         }
-        return result;
+        return 1;
     }
 }
