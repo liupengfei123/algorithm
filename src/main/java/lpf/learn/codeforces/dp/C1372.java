@@ -42,7 +42,7 @@ public class C1372 {
             }
             left = Math.min(left, array[i]);
             if (left == i + 1) {
-                result = Math.max(result, status ? 2 : 1);
+                result = status ? 2 : 1;
                 if (result == 2) {
                     return result;
                 }
