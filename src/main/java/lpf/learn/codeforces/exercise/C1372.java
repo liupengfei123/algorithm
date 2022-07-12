@@ -1,4 +1,4 @@
-package lpf.learn.codeforces.dp;
+package lpf.learn.codeforces.exercise;
 
 import java.util.Scanner;
 
