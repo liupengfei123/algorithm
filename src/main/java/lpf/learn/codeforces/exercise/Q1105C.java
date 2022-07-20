@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  * https://codeforces.com/problemset/problem/1105/C
  */
-public class C1105 {
+public class Q1105C {
     public static Scanner sc = new Scanner(System.in);
     public static int mod = 1000000007;
 

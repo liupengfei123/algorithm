@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * https://codeforces.com/problemset/problem/1372/C
  */
-public class C1372 {
+public class Q1372C {
     public static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {

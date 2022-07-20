@@ -1,8 +1,8 @@
-package lpf.learn.codeforces.dp;
+package lpf.learn.codeforces.exercise;
 
 import java.util.Scanner;
 
-public class B573 {
+public class Q573B {
     public static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
