@@ -44,7 +44,6 @@ public class MinimumLinesToRepresentALineChart {
 
         for (int i = 1; i < stockPrices.length; i++) {
             int[] stockPrice = stockPrices[i];
-            // todo 斜率 4 / 3 的问题
             int[] nowSlope = new int[]{stockPrice[1] - lastStock[1], stockPrice[0] - lastStock[0]};
 
             if (!slopeEquals(lastSlope, nowSlope)) {
@@ -59,8 +58,8 @@ public class MinimumLinesToRepresentALineChart {
     }
 
     private boolean slopeEquals(int[] lastSlope, int[] nowSlope) {
-        long value1 = lastSlope[0] * nowSlope[1];
-        long value2 = lastSlope[1] * nowSlope[0];
+        long value1 = (long) lastSlope[0] * nowSlope[1];
+        long value2 = (long) lastSlope[1] * nowSlope[0];
 
         return value1 == value2;
     }
