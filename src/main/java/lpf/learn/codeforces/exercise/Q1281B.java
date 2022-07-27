@@ -28,9 +28,10 @@ public class Q1281B {
             charIndex[chars[i] - 'A'] = i;
         }
 
+        int j = 0;
         out:
         for (int i = 0; i < chars.length; i++) {
-            for (int j = 0; j < chars[i] - 'A'; j++) {
+            for (; j < chars[i] - 'A'; j++) {
                 if (charIndex[j] > i) {
                     char temp = chars[i];
                     chars[i] = chars[charIndex[j]];
