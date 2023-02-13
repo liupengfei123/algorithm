@@ -4,8 +4,6 @@ import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 /** 3956. 截断数组
@@ -24,22 +22,16 @@ public class Q3959 {
     private static long run(int n) {
         int[] preSum = new int[n + 1];
 
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < n; i++) {
-            preSum[i + 1] = preSum[i] + sc.nextInt();
-            map.merge(preSum[i + 1], 1, Integer::sum);
-        }
-        map.merge(preSum[n], -1, Integer::sum);
+        for (int i = 0; i < n; i++) preSum[i + 1] = preSum[i] + sc.nextInt();
 
+        if (preSum[n] % 3 != 0) return 0;
+
+        int t = preSum[n] / 3, cnt = 0;
         long res = 0;
-        for (int i = 0; i < n - 1; i++) {
-            int t = preSum[i + 1];
-            map.merge(t, -1, Integer::sum);
-
-            if (preSum[n] != t * 3) continue;
-
-            Integer v = map.getOrDefault(t << 1, 0);
-            res += v;
+        // i 为 后面一个分隔点， cnt 为 i 之前的有多少个分隔点数量
+        for (int i = 1; i < n - 1; i++) {
+            if (preSum[i] == t) cnt++;
+            if (preSum[i + 1] == t << 1) res += cnt;
         }
         return res;
     }
