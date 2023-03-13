@@ -25,8 +25,8 @@ public class Q2060 {
 
     private static int run(char[] chars1, char[] chars2) {
         int v1 = 0, v2 = 0;
-        for (int i = 0; i < chars1.length; i++) v1 = v1 * 2 + (chars1[i] - '0');
-        for (int i = 0; i < chars2.length; i++) v2 = v2 * 3 + (chars2[i] - '0');
+        for (char c : chars1) v1 = v1 * 2 + (c - '0');
+        for (char c : chars2) v2 = v2 * 3 + (c - '0');
 
         int temp = v1 - v2;
         Map<Integer, Integer> map = new HashMap<>();
