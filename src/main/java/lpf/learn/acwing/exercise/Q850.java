@@ -1,15 +1,7 @@
 package lpf.learn.acwing.exercise;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 /** 848. 有向图的拓扑序列
  给定一个 n 个点 m 条边的有向图，点的编号是 1 到 n ，图中可能存在重边和自环。

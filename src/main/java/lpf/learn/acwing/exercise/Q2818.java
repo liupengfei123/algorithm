@@ -1,6 +1,6 @@
 package lpf.learn.acwing.exercise;
 
-import java.util.Scanner;
+import java.util.*;
 
 /** 2816. 判断子序列
  给定一个长度为 n 的整数序列 a1,a2,…,an 以及一个长度为 m 的整数序列 b1,b2,…,bm。

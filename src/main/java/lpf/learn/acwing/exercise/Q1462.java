@@ -1,12 +1,7 @@
 package lpf.learn.acwing.exercise;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.io.*;
+import java.util.*;
 
 /**
  * 1460. 我在哪？

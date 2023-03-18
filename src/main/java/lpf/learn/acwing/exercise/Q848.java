@@ -1,11 +1,7 @@
 package lpf.learn.acwing.exercise;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 /** 846. 树的重心
  给定一颗树，树中包含 n 个结点（编号 1∼n ）和 n−1 条无向边。

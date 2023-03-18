@@ -1,10 +1,7 @@
 package lpf.learn.acwing.exercise;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 /** 885. 求组合数 I
  * 给定 n 组询问，每组询问给定两个整数 a，b，请你输出 Cbamod(109+7) 的值。

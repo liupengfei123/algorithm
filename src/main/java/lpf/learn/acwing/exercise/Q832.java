@@ -1,12 +1,7 @@
 package lpf.learn.acwing.exercise;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 /** 830. 单调栈
  给定一个长度为 N 的整数数列，输出每个数左边第一个比它小的数，如果不存在则输出 −1。

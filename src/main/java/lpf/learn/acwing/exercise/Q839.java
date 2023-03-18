@@ -1,7 +1,6 @@
 package lpf.learn.acwing.exercise;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 /** 836. 合并集合
  一共有 n 个数，编号是 1∼n，最开始每个数各自在一个集合中。

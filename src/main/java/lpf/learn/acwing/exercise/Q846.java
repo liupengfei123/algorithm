@@ -1,12 +1,7 @@
 package lpf.learn.acwing.exercise;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 /** 844. 走迷宫
  给定一个 n×m 的二维整数数组，用来表示一个迷宫，数组中只包含 0 或 1 ，其中 0 表示可以走的路，1 表示不可通过的墙壁。

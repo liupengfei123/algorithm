@@ -1,8 +1,7 @@
 package lpf.learn.acwing.exercise;
 
 import java.io.*;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
 
 /**
  * 1249. 亲戚

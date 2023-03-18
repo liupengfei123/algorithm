@@ -1,11 +1,7 @@
 package lpf.learn.acwing.exercise;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 /** 851. Dijkstra求最短路 I
  给定一个 n 个点 m 条边的有向图，图中可能存在重边和自环，所有边权均为正值。

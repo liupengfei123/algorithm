@@ -1,9 +1,7 @@
 package lpf.learn.acwing.exercise;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 /** 282. 石子合并
  设有 N 堆石子排成一排，其编号为 1,2,3,…,N。

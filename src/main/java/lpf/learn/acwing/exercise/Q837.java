@@ -1,6 +1,6 @@
 package lpf.learn.acwing.exercise;
 
-import java.util.Scanner;
+import java.util.*;
 
 /** 835. Trie字符串统计
  维护一个字符串集合，支持两种操作：
