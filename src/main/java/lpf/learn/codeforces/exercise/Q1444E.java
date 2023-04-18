@@ -52,8 +52,7 @@ public class Q1444E {
             if (c >= entry.getValue()) queue.offer(pow(i, c - entry.getValue() + 1));
         }
 
-        long res = p / queue.poll();
-        return res;
+        return p / queue.poll();
     }
 
     private static long pow(long value, int b) {
