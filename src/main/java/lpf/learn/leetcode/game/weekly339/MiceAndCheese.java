@@ -42,17 +42,14 @@ import java.util.Comparator;
 public class MiceAndCheese {
     public int miceAndCheese(int[] reward1, int[] reward2, int k) {
         int n = reward1.length;
-        int[][] array = new int[n][2];
-        for (int i = 0; i < n; i++) {
-            array[i][0] = reward1[i];
-            array[i][1] = reward2[i];
-        }
+        Integer [] index = new Integer[n];
+        Arrays.setAll(index, i -> i);
 
-        Arrays.sort(array, Comparator.comparing((int[] a) -> a[0] - a[1]).reversed());
+        Arrays.sort(index, Comparator.comparing((Integer i) -> reward1[i] - reward2[i]).reversed());
 
         int res = 0;
-        for (int i = 0; i < k; i++) res += array[i][0];
-        for (int i = k; i < n; i++) res += array[i][1];
+        for (int i = 0; i < k; i++) res += reward1[index[i]];
+        for (int i = k; i < n; i++) res += reward2[index[i]];
 
         return res;
     }
