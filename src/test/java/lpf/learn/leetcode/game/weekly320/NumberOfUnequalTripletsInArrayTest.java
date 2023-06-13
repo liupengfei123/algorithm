@@ -1,14 +1,19 @@
 package lpf.learn.leetcode.game.weekly320;
 
-import lpf.learn.leetcode.game.FindTriangularSumOfAnArray;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class NumberOfUnequalTripletsInArrayTest {
     @Test
     public void test1(){
-        FindTriangularSumOfAnArray test = new FindTriangularSumOfAnArray();
-        Assert.assertEquals(8, test.triangularSum(new int[]{1,2,3,4,5}));
+        NumberOfUnequalTripletsInArray test = new NumberOfUnequalTripletsInArray();
+        Assert.assertEquals(3, test.unequalTriplets(new int[]{4,4,2,4,3}));
+    }
+
+    @Test
+    public void test2(){
+        NumberOfUnequalTripletsInArray test = new NumberOfUnequalTripletsInArray();
+        Assert.assertEquals(0, test.unequalTriplets(new int[]{1,1,1,1,1}));
     }
 
 }

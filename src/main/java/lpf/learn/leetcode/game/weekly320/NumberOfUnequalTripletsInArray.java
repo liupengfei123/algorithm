@@ -43,20 +43,18 @@ import java.util.*;
  */
 public class NumberOfUnequalTripletsInArray {
     public int unequalTriplets(int[] nums) {
-
         Map<Integer, Integer> count = new HashMap<>();
-        for (int num : nums) {
-            count.merge(num, 1, Integer::sum);
-        }
+        for (int num : nums) count.merge(num, 1, Integer::sum);
 
         if (count.size() < 3)  return 0;
 
         int result = 0;
         List<Integer> values = new ArrayList<>(count.values());
 
-        for (int i = 0; i < values.size(); i++) {
-            for (int j = i + 1; j < values.size(); j++) {
-                for (int z = j + 1; z < values.size(); z++) {
+        int size = values.size();
+        for (int i = 0; i < size; i++) {
+            for (int j = i + 1; j < size; j++) {
+                for (int z = j + 1; z < size; z++) {
                     result += values.get(i) * values.get(j) * values.get(z);
                 }
             }
