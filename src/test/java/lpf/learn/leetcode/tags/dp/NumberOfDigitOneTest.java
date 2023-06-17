@@ -20,7 +20,7 @@ public class NumberOfDigitOneTest {
     @Test
     public void test3(){
         NumberOfDigitOne test = new NumberOfDigitOne();
-        Assert.assertEquals(1, test.countDigitOne(8));
+        Assert.assertEquals(20, test.countDigitOne(99));
     }
 
 
