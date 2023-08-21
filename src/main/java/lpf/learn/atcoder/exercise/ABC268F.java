@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class ABC268F {
     private static final Scanner sc = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
-    public static PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
+    private static final PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
 
     public static void main(String[] args) {
         int n = sc.nextInt();

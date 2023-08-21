@@ -8,8 +8,8 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class ABC275F {
-    public static Scanner sc = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
-    public static PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
+    private static final Scanner sc = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
+    private static final PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
 
     public static void main(String[] args) {
         int n = sc.nextInt();

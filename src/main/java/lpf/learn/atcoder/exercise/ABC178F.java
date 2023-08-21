@@ -8,8 +8,8 @@ import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
 public class ABC178F {
-    public static MyScanner sc = new MyScanner();
-    public static PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
+    private static final MyScanner sc = new MyScanner();
+    private static final PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
 
     public static void main(String[] args) {
         int n = sc.nextInt();

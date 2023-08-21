@@ -11,8 +11,8 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class ARC120C {
-    public static Scanner sc = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
-    public static PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
+    private static final Scanner sc = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
+    private static final PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
 
     public static void main(String[] args) {
         int n = sc.nextInt();
@@ -31,7 +31,7 @@ public class ARC120C {
     private static long run(int n, int[] a, int[] b) {
         long[] tree = new long[n + 1];
 
-        Map<Integer, List<Integer>> pos = new HashMap();
+        Map<Integer, List<Integer>> pos = new HashMap<>();
 
         for (int i = 0; i < a.length; i++) {
             int v = a[i];
