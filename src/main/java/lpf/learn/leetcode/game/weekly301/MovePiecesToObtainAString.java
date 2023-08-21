@@ -48,21 +48,19 @@ public class MovePiecesToObtainAString {
             return false;
         }
 
-        int lcs = 0, lct = 0;
-        int rcs = 0, rct = 0;
+        int lc = 0, rc = 0;
         int n = start.length();
 
         for (int i = 0; i < n; i++) {
-            char sc = start.charAt(i);
-            char tc = target.charAt(i);
+            char sc = start.charAt(i), tc = target.charAt(i);
 
-            if (sc == 'L') lcs++;
-            if (sc == 'R') rcs++;
-            if (tc == 'L') lct++;
-            if (tc == 'R') rct++;
+            if (sc == 'L') lc--;
+            if (tc == 'L') lc++;
 
-            if (lcs > lct) return false;
-            if (rcs < rct) return false;
+            if (sc == 'R') rc++;
+            if (tc == 'R') rc--;
+
+            if (lc < 0 || rc < 0) return false;
         }
         return true;
     }
