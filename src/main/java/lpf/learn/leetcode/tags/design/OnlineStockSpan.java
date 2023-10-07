@@ -34,30 +34,31 @@ import java.util.Stack;
  */
 public class OnlineStockSpan {
     private final Stack<Pair> stack;
-    private int index;
+    private int ni;
+
     public OnlineStockSpan() {
         stack = new Stack<>();
-        stack.push(new Pair(Integer.MAX_VALUE, index++));
+        stack.push(new Pair(Integer.MAX_VALUE, ni++));
     }
 
     public int next(int price) {
-        while (stack.peek().value <= price) {
+        while (stack.peek().v <= price) {
             stack.pop();
         }
 
-        int result = index - stack.peek().index;
-        stack.push(new Pair(price, index++));
+        int result = ni - stack.peek().i;
+        stack.push(new Pair(price, ni++));
 
         return result;
     }
 
     static class Pair {
-        int value;
-        int index;
+        int v;
+        int i;
 
-        public Pair(int value, int index) {
-            this.value = value;
-            this.index = index;
+        public Pair(int v, int i) {
+            this.v = v;
+            this.i = i;
         }
     }
 }
