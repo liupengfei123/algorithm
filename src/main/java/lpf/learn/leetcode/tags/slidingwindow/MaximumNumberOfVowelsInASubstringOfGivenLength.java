@@ -53,29 +53,26 @@ package lpf.learn.leetcode.tags.slidingwindow;
 public class MaximumNumberOfVowelsInASubstringOfGivenLength {
 
     public int maxVowels(String s, int k) {
-
-        char[] charArray = s.toCharArray();
-        int n = charArray.length;
-
-        int cnt = 0;
+        char[] chars = s.toCharArray();
+        int cnt = 0, n = s.length();
 
         for (int i = 0; i < k; i++) {
-            if (isYuan(charArray[i])) cnt++;
+            if (isYuan(chars[i])) cnt++;
         }
-
         int res = cnt;
-        for (int i = k; i < n; i++) {
-            if (isYuan(charArray[i - k])) cnt--;
 
-            if (isYuan(charArray[i])) {
-                cnt++;
-                res = Math.max(cnt, res);
-            }
+        for (int i = k; i < n; i++) {
+            if (isYuan(chars[i])) cnt++;
+            if (isYuan(chars[i - k])) cnt--;
+
+            res = Math.max(res, cnt);
         }
+
         return res;
     }
 
-    public boolean isYuan(char c) {
+
+    private boolean isYuan(char c) {
         return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
     }
 }
