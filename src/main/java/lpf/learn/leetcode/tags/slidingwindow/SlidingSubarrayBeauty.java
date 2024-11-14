@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.game.weekly342;
+package lpf.learn.leetcode.tags.slidingwindow;
 
 /** 2653 滑动子数组的美丽值
  <p>给你一个长度为 <code>n</code>&nbsp;的整数数组&nbsp;<code>nums</code>&nbsp;，请你求出每个长度为&nbsp;<code>k</code>&nbsp;的子数组的 <b>美丽值</b>&nbsp;。</p>
@@ -50,24 +50,28 @@ public class SlidingSubarrayBeauty {
 
     public int[] getSubarrayBeauty(int[] nums, int k, int x) {
         int n = nums.length;
-        int[] count = new int[102];
-        int[] res = new int[n - k + 1];
+        int[] cnt = new int[101], res = new int[n - k + 1];
 
-        for (int i = 0; i < k - 1; i++) count[nums[i] + 50]++;
+        for (int i = 0; i < k; i++) cnt[nums[i] + 50]++;
 
-        for (int i = k - 1, j = 0; i < n ; i++, j++) {
-            count[nums[i] + 50]++;
+        res[0] = getBeauty(cnt, x);
 
-            int value = 0, c = x;
-            for (int z = 0; z < 102; z++) {
-                c -= count[z];
-                value = z;
-                if (c <= 0) break;
-            }
-            res[j] = value < 50 ? value - 50 : 0;
+        for (int i = k; i < n; i++) {
+            cnt[nums[i] + 50]++;
+            cnt[nums[i - k] + 50]--;
 
-            count[nums[i - k + 1] + 50]--;
+            res[i - k + 1] = getBeauty(cnt, x);
         }
         return res;
+    }
+
+    private int getBeauty(int[] cnt, int x) {
+        int i = 0;
+        for (; i < cnt.length; i++) {
+            if (x <= cnt[i]) break;
+
+            x -= cnt[i];
+        }
+        return i < 50 ? i - 50 : 0;
     }
 }
