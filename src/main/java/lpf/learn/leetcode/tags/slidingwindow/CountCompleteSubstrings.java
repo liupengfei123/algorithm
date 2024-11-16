@@ -33,4 +33,47 @@ package lpf.learn.leetcode.tags.slidingwindow;
  </ul>
  */
 public class CountCompleteSubstrings {
+    public int countCompleteSubstrings(String word, int k) {
+        int res = 0, n = word.length();
+
+        for (int i = 0; i < n;) {
+            int st = i;
+            for (i++; i < n && Math.abs(word.charAt(i) - word.charAt(i - 1)) <= 2; i++);
+
+            for (int c = 1; c <= 26; c++) {
+                res += solve(word.substring(st, i).toCharArray(),c * k, k);
+            }
+        }
+        return res;
+    }
+
+
+
+    private int solve(char[] word, int len, int k) {
+        int n = word.length;
+
+        if (len > n) return 0;
+        if (len == 1) return n;
+
+        int[] cnt = new int[26];
+
+        for (int i = 0; i < len; i++) cnt[word[i] - 'a']++;
+
+        int res = check(cnt, k) ? 1 : 0;
+
+        for (int i = len; i < n; i++) {
+            cnt[word[i] - 'a']++;
+            cnt[word[i - len] - 'a']--;
+
+            if (check(cnt, k)) res++;
+        }
+        return res;
+    }
+
+    private boolean check(int[] cnt, int k) {
+        for (int value : cnt) {
+            if (value > 0 && value != k) return false;
+        }
+        return true;
+    }
 }

@@ -1,6 +1,9 @@
 package lpf.learn.leetcode.tags.slidingwindow;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 /** 438 找到字符串中所有字母异位词
  <p>给定两个字符串&nbsp;<code>s</code>&nbsp;和 <code>p</code>，找到&nbsp;<code>s</code><strong>&nbsp;</strong>中所有&nbsp;<code>p</code><strong>&nbsp;</strong>的&nbsp;<strong><span data-keyword="anagram">异位词</span>&nbsp;</strong>的子串，返回这些子串的起始索引。不考虑答案输出的顺序。</p>
 
@@ -30,4 +33,34 @@ package lpf.learn.leetcode.tags.slidingwindow;
  </ul>
  */
 public class FindAllAnagramsInAString {
+    public List<Integer> findAnagrams(String s, String p) {
+        int n = s.length(), m = p.length();
+        List<Integer> result = new ArrayList<>();
+        if (m > n) return result;
+
+        int[] target = new int[26], source = new int[26];
+        for (char c : p.toCharArray()) target[c - 'a']++;
+
+        char[] chars = s.toCharArray();
+        for (int i = 0; i < m; i++) source[chars[i] - 'a']++;
+
+        if (check(target, source)) result.add(0);
+
+        for (int i = m; i < n; i++) {
+            source[chars[i] - 'a']++;
+            source[chars[i - m] - 'a']--;
+
+            if (check(target, source)) result.add(i - m + 1);
+        }
+
+        return result;
+    }
+
+    private boolean check(int[] target, int[] source) {
+        for (int i = 0; i < 26; i++) {
+            if (target[i] != source[i]) return false;
+        }
+        return true;
+    }
+
 }

@@ -41,16 +41,59 @@ package lpf.learn.leetcode.tags.slidingwindow;
  </ul>
  */
 public class MinimumNumberOfFlipsToMakeTheBinaryStringAlternating {
+
     public int minFlips(String s) {
         int n = s.length();
         char[] chars = s.toCharArray();
 
+        int cnt = 0;
+
+        char[] flips = new char[]{'0', '1'};
+        for (int i = 0; i < n; i++) cnt += chars[i] == flips[i % 2] ? 0 : 1;
+
+        int res = Math.min(cnt, n - cnt);
+
+        if ((n & 1) == 0) return res;
 
 
+        for (int i = 0; i < n; i++) {
+            cnt -= chars[i] == flips[i % 2] ? 0 : 1;
+            cnt += chars[i] == flips[(i + n) % 2] ? 0 : 1;
 
-        return 0;
+            res = Math.min(res, Math.min(cnt, n - cnt));
+        }
+        return res;
     }
 
 
+    public int minFlips2(String s) {
+        char[] chars = s.toCharArray();
+        int n = s.length();
 
+        int[][] pre = new int[n][2];
+        pre[0][0] = chars[0] == '0' ? 0 : 1;
+        pre[0][1] = chars[0] == '1' ? 0 : 1;
+        for (int i = 1; i < n; i++) {
+            pre[i][0] = pre[i - 1][1] + (chars[i] == '0' ? 0 : 1);
+            pre[i][1] = pre[i - 1][0] + (chars[i] == '1' ? 0 : 1);
+        }
+        int res = Math.min(pre[n - 1][0], pre[n - 1][1]);
+
+        if ((n & 1) == 0) return res;
+
+        int suff0 = chars[n - 1] == '0' ? 0 : 1;
+        int suff1 = chars[n - 1] == '1' ? 0 : 1;
+
+        for (int i = n - 2; i >= 0; i--) {
+            res = Math.min(res, pre[i][0] + suff0);
+            res = Math.min(res, pre[i][1] + suff1);
+
+            int temp0 = suff1 + (chars[i] == '0' ? 0 : 1);
+            int temp1 = suff0 + (chars[i] == '1' ? 0 : 1);
+
+            suff0 = temp0;
+            suff1 = temp1;
+        }
+        return res;
+    }
 }

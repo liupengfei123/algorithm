@@ -24,4 +24,33 @@ package lpf.learn.leetcode.tags.slidingwindow;
  </ul>
  */
 public class PermutationInString {
+    public boolean checkInclusion(String s1, String s2) {
+        int n = s2.length(), m = s1.length();
+        if (m > n) return false;
+
+        int[] target = new int[26], source = new int[26];
+        for (char c : s1.toCharArray()) target[c - 'a']++;
+
+        char[] chars = s2.toCharArray();
+        for (int i = 0; i < m; i++) source[chars[i] - 'a']++;
+
+        if (check(target, source)) return true;
+
+        for (int i = m; i < n; i++) {
+            source[chars[i] - 'a']++;
+            source[chars[i - m] - 'a']--;
+
+            if (check(target, source)) return true;
+        }
+        return false;
+    }
+
+
+    private boolean check(int[] target, int[] source) {
+        for (int i = 0; i < 26; i++) {
+            if (target[i] != source[i]) return false;
+        }
+        return true;
+    }
+
 }
