@@ -36,4 +36,26 @@ package lpf.learn.leetcode.tags.slidingwindow;
  </ul>
  */
 public class FindSubstringWithGivenHashValue {
+
+    public String subStrHash(String s, int p, int m, int k, int hashValue) {
+        int n = s.length();
+        char[] chars = s.toCharArray();
+
+        long hash = 0, mult = 1;
+
+        for (int i = n - 1; i >= n - k; i--) {
+            hash = (hash * p + (chars[i] - '`')) % m;
+            mult = (mult * p) % m;
+        }
+
+        int pos = hash == hashValue ? n - k : 0;
+        for (int i = n - k - 1; i >= 0; i--) {
+            hash = (hash * p + (chars[i] - '`') - mult * (chars[i + k] - '`') % m) % m;
+            hash = (hash + m) % m;
+
+            if (hash == hashValue) pos = i;
+        }
+
+        return s.substring(pos, pos + k);
+    }
 }

@@ -1,6 +1,11 @@
 package lpf.learn.leetcode.tags.slidingwindow;
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /** 30 串联所有单词的子串
  <p>给定一个字符串&nbsp;<code>s</code><strong>&nbsp;</strong>和一个字符串数组&nbsp;<code>words</code><strong>。</strong>&nbsp;<code>words</code>&nbsp;中所有字符串 <strong>长度相同</strong>。</p>
  <p>&nbsp;<code>s</code><strong>&nbsp;</strong>中的 <strong>串联子串</strong> 是指一个包含&nbsp;&nbsp;<code>words</code>&nbsp;中所有字符串以任意顺序排列连接起来的子串。</p>
@@ -46,4 +51,35 @@ package lpf.learn.leetcode.tags.slidingwindow;
  </ul>
  */
 public class SubstringWithConcatenationOfAllWords {
+    public List<Integer> findSubstring(String s, String[] words) {
+        List<Integer> res = new ArrayList<>();
+
+        int m = words.length, n = words[0].length(), ls = s.length();
+
+        for (int i = 0; i < n; i++) {
+            if (i + n * m > ls) break;
+
+            Map<String, Integer> diff = new HashMap<>();
+            for (int j = 0; j < m; j++) {
+                String word = s.substring(i + j * n, i + (j + 1) * n);
+                diff.merge(word, 1, Integer::sum);
+            }
+
+            for (String word : words) diff.merge(word, -1, this::sum);
+
+            if (diff.isEmpty()) res.add(i);
+
+            for (int start = i + n; start < ls - n * m + 1; start += n) {
+                diff.merge(s.substring(start + (m - 1) * n, start + n * m), 1, this::sum);
+                diff.merge(s.substring(start - n, start), -1, this::sum);
+
+                if (diff.isEmpty()) res.add(start);
+            }
+        }
+        return res;
+    }
+
+    private Integer sum(int a, int b) {
+        return (a += b) == 0 ? null : a;
+    }
 }
