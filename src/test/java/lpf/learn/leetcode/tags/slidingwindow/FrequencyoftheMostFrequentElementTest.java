@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.game.weekly238;
+package lpf.learn.leetcode.tags.slidingwindow;
 
 import org.junit.Assert;
 import org.junit.Test;

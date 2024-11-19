@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.learn.hash;
+package lpf.learn.leetcode.tags.slidingwindow;
 
 
 import org.junit.Assert;

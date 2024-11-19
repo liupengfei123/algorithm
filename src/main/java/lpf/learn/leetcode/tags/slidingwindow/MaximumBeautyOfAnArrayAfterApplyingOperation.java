@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.game.weekly354;
+package lpf.learn.leetcode.tags.slidingwindow;
 
 import java.util.Arrays;
 
@@ -44,12 +44,12 @@ public class MaximumBeautyOfAnArrayAfterApplyingOperation {
     public int maximumBeauty(int[] nums, int k) {
         Arrays.sort(nums);
 
-        int  i = 0, r = 0, n = nums.length;
-        int res = 0;
-        while (i < n) {
-            while (r < n && nums[r] - k <= nums[i] + k) r++;
-            res = Math.max(res, r - i);
-            i++;
+        int n = nums.length, res = 0;
+
+        for (int l = 0, r = 0; r < n; r++) {
+            while (nums[r] - nums[l] > 2 * k) l++;
+
+            res = Math.max(res, r - l + 1);
         }
         return res;
     }
