@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.game.weekly325;
+package lpf.learn.leetcode.tags.slidingwindow;
 
 /** [2516] 每种字符至少取 K 个
  <p>给你一个由字符 <code>'a'</code>、<code>'b'</code>、<code>'c'</code> 组成的字符串 <code>s</code> 和一个非负整数 <code>k</code> 。每分钟，你可以选择取走 <code>s</code> <strong>最左侧</strong> 还是 <strong>最右侧</strong> 的那个字符。</p>
@@ -31,25 +31,24 @@ package lpf.learn.leetcode.game.weekly325;
  */
 public class TakeKOfEachCharacterFromLeftAndRight {
     public int takeCharacters(String s, int k) {
-        int n = s.length();
-        int[] count = new int[3];
+        char[] chars = s.toCharArray();
+        int[] cnts = new int[3];
+        for (char c : chars) cnts[c - 'a']++;
 
-        for (int i = 0; i < n; i++) count[s.charAt(i) - 'a']++;
+        for (int cnt : cnts) if (cnt < k) return -1;
 
-        for (int i = 0; i < 3; i++) if ((count[i] -= k) < 0) return -1;
-
-        int res = 0;
+        int n = s.length(), len = 0;
         int[] temp = new int[3];
-        for (int left = 0, right = 0; right < n; right++) {
-            int index = s.charAt(right) - 'a';
-            temp[index]++;
+        for (int l = 0, r = 0; r < n; r++) {
+            int v = chars[r] - 'a';
+            temp[v]++;
 
-            while (left <= right && temp[index] > count[index]) {
-                temp[s.charAt(left++) - 'a']--;
+            while (temp[v] + k > cnts[v]) {
+                temp[chars[l++] - 'a']--;
             }
 
-            res = Math.max(res, right - left + 1);
+            len = Math.max(len, r - l + 1);
         }
-        return n - res;
+        return n - len;
     }
 }

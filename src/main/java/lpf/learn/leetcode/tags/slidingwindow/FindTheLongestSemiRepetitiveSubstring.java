@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.game.biweekly106;
+package lpf.learn.leetcode.tags.slidingwindow;
 
 
 /** [2730] 找到最长的半重复子字符串
@@ -37,20 +37,19 @@ package lpf.learn.leetcode.game.biweekly106;
 public class FindTheLongestSemiRepetitiveSubstring {
 
     public int longestSemiRepetitiveSubstring(String s) {
-        int n = s.length();
         char[] chars = s.toCharArray();
-        int res = 1;
+        int n = s.length(), res = 1, cnt = 0;
 
-        int l = 0, r = 1;
-        while (r < n) {
-            while (r < n && chars[r - 1] != chars[r]) r++;
+        for (int l = 0, r = 1; r < n; r++) {
+            if (chars[r] == chars[r - 1]) cnt++;
 
-            int temp = r < n ? r + 1 : r;
-            while (temp < n && chars[temp - 1] != chars[temp]) temp++;
+            while (cnt > 1) {
+                if (chars[l] == chars[l + 1]) cnt--;
 
-            res = Math.max(res, temp - l);
-            l = r;
-            r = temp;
+                l++;
+            }
+
+            res = Math.max(res, r - l + 1);
         }
         return res;
     }

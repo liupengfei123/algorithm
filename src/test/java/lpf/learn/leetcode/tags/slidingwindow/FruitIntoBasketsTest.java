@@ -1,9 +1,14 @@
-package lpf.learn.leetcode.tags.twopoint;
+package lpf.learn.leetcode.tags.slidingwindow;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * @author liupf
+ * @date 2020-09-07 21:45
+ */
 public class FruitIntoBasketsTest {
+
     @Test
     public void test1(){
         FruitIntoBaskets test = new FruitIntoBaskets();
@@ -28,5 +33,9 @@ public class FruitIntoBasketsTest {
         Assert.assertEquals(5, test.totalFruit(new int[]{3,3,3,1,2,1,1,2,3,3,4}));
     }
 
-
+    @Test
+    public void test5(){
+        FruitIntoBaskets test = new FruitIntoBaskets();
+        Assert.assertEquals(5, test.totalFruit(new int[]{3,3,3,1,3,2,1,1,2,3,3,4}));
+    }
 }

@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.tags.array;
+package lpf.learn.leetcode.tags.slidingwindow;
 
 
 import java.util.HashMap;
@@ -54,23 +54,18 @@ import java.util.Map;
 public class FruitIntoBaskets {
 
     public int totalFruit(int[] fruits) {
-        Map<Integer, Integer> map = new HashMap<>();
-        int result = 0;
-        int left = 0, right = 0;
+        Map<Integer, Integer> cnt = new HashMap<>();
+        int n = fruits.length, res = 0;
 
-        while (right < fruits.length) {
-            map.merge(fruits[right], 1, Integer::sum);
+        for (int l = 0, r = 0; r < n; r++) {
+            cnt.merge(fruits[r], 1, Integer::sum);
 
-            while (map.size() > 2) {
-                Integer value = map.merge(fruits[left++], -1, Integer::sum);
-
-                if (value == 0) map.remove(fruits[left - 1]);
+            while (cnt.size() > 2) {
+                cnt.merge(fruits[l++], -1, (a, b) -> (a += b) == 0 ? null : a);
             }
-            result = Math.max(result, right - left + 1);
-            right++;
+
+            res = Math.max(res, r - l + 1);
         }
-
-        return result;
+        return res;
     }
-
 }
