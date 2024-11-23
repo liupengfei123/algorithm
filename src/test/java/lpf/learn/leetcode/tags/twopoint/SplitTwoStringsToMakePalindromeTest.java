@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.tags.string;
+package lpf.learn.leetcode.tags.twopoint;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -42,5 +42,11 @@ public class SplitTwoStringsToMakePalindromeTest {
     public void test6() {
         SplitTwoStringsToMakePalindrome temp = new SplitTwoStringsToMakePalindrome();
         Assert.assertFalse(temp.checkPalindromeFormation("abda", "acmc"));
+    }
+
+    @Test
+    public void test7() {
+        SplitTwoStringsToMakePalindrome temp = new SplitTwoStringsToMakePalindrome();
+        Assert.assertTrue(temp.checkPalindromeFormation("aaaa", "acmc"));
     }
 }

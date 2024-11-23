@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.tags.string;
+package lpf.learn.leetcode.tags.twopoint;
 
 /** 1750 删除字符串两端相同字符后的最短长度
  <p>给你一个只包含字符 <code>'a'</code>，<code>'b'</code> 和 <code>'c'</code> 的字符串 <code>s</code> ，你可以执行下面这个操作（5 个步骤）任意次：</p>
@@ -45,14 +45,13 @@ package lpf.learn.leetcode.tags.string;
  */
 public class MinimumLengthOfStringAfterDeletingSimilarEnds {
     public int minimumLength(String s) {
-        char[] chars = s.toCharArray();
         int n = s.length(), l = 0, r = n - 1;
-        while (l < r && chars[l] == chars[r]) {
-            int lT = l;
-            while (l < r + 1 && chars[lT] == chars[l]) l++;
 
-            int rT = r;
-            while (l - 1 < r && chars[rT] == chars[r]) r--;
+        while (l < r && s.charAt(l) == s.charAt(r)) {
+            char t = s.charAt(l);
+
+            while (l <= r && s.charAt(l) == t) l++;
+            while (l <= r && s.charAt(r) == t) r--;
         }
         return Math.max(0, r - l + 1);
     }

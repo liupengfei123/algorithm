@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.tags.string;
+package lpf.learn.leetcode.tags.twopoint;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -25,5 +25,17 @@ public class MinimumLengthOfStringAfterDeletingSimilarEndsTest {
     public void test3() {
         MinimumLengthOfStringAfterDeletingSimilarEnds temp = new MinimumLengthOfStringAfterDeletingSimilarEnds();
         Assert.assertEquals(3, temp.minimumLength("aabccabba"));
+    }
+
+    @Test
+    public void test4() {
+        MinimumLengthOfStringAfterDeletingSimilarEnds temp = new MinimumLengthOfStringAfterDeletingSimilarEnds();
+        Assert.assertEquals(0, temp.minimumLength("aaaaaaaaaaaaaaaaaaaaa"));
+    }
+
+    @Test
+    public void test5() {
+        MinimumLengthOfStringAfterDeletingSimilarEnds temp = new MinimumLengthOfStringAfterDeletingSimilarEnds();
+        Assert.assertEquals(1, temp.minimumLength("aaaaaaaaaaabaaaaa"));
     }
 }

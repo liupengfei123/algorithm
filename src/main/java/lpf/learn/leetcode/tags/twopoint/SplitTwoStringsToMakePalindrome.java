@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.tags.string;
+package lpf.learn.leetcode.tags.twopoint;
 
 
 /** [1616] 分割两个字符串得到回文串
@@ -43,27 +43,27 @@ package lpf.learn.leetcode.tags.string;
 public class SplitTwoStringsToMakePalindrome {
 
     public boolean checkPalindromeFormation(String a, String b) {
-        return checkConcatenation(a, b) || checkConcatenation(b, a);
+        return checkPalindrome(a, b) || checkPalindrome(b, a);
     }
 
-    public boolean checkConcatenation(String a, String b) {
-        int n = a.length();
-        int left = 0, right = n - 1;
-        while (left < right && a.charAt(left) == b.charAt(right)) {
-            left++;
-            right--;
+    private boolean checkPalindrome(String a, String b) {
+        char[] ac = a.toCharArray(), bc = b.toCharArray();
+        int n = a.length(), l = 0, r = n - 1;
+
+        while (l < r) {
+            if (ac[l++] != bc[r--]) {
+                return checkPalindrome(ac, --l, ++r) || checkPalindrome(bc, l, r);
+            }
         }
-        if (left >= right) {
-            return true;
-        }
-        return checkSelfPalindrome(a, left, right) || checkSelfPalindrome(b, left, right);
+        return true;
     }
 
-    public boolean checkSelfPalindrome(String a, int left, int right) {
-        while (left < right && a.charAt(left) == a.charAt(right)) {
-            left++;
-            right--;
+    private boolean checkPalindrome(char[] chars, int l , int r) {
+        while (l < r) {
+            if (chars[l++] != chars[r--]) return false;
         }
-        return left >= right;
+        return true;
     }
+
+
 }
