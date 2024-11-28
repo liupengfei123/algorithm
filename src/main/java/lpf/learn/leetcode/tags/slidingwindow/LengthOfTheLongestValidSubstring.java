@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.game.weekly354;
+package lpf.learn.leetcode.tags.slidingwindow;
 
 import java.util.HashSet;
 import java.util.List;
@@ -38,16 +38,17 @@ public class LengthOfTheLongestValidSubstring {
 
     public int longestValidSubstring(String word, List<String> forbidden) {
         Set<String> fb = new HashSet<>(forbidden);
-        int ans = 0, left = 0, n = word.length();
-        for (int right = 0; right < n; right++) {
-            for (int i = right; i >= left && i > right - 10; i--) {
-                if (fb.contains(word.substring(i, right + 1))) {
-                    left = i + 1; // 当子串右端点 >= right 时，合法子串一定不能包含 word[i]
+        int n = word.length(), res = 0;
+
+        for (int l = 0, r = 0; r < n; r++) {
+            for (int i = 0; i < 10 && l + i <= r; i++) {
+                if (fb.contains(word.substring(r - i, r + 1))) {
+                    l = r - i + 1;
                     break;
                 }
             }
-            ans = Math.max(ans, right - left + 1);
+            res = Math.max(res, r - l + 1);
         }
-        return ans;
+        return res;
     }
 }
