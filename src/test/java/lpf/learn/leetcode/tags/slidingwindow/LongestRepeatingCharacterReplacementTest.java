@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.tags.twopoint;
+package lpf.learn.leetcode.tags.slidingwindow;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -44,5 +44,11 @@ public class LongestRepeatingCharacterReplacementTest {
     public void test7(){
         LongestRepeatingCharacterReplacement test = new LongestRepeatingCharacterReplacement();
         Assert.assertEquals(9, test.characterReplacement("AAABCBEBDBEB", 4));
+    }
+
+    @Test
+    public void test8(){
+        LongestRepeatingCharacterReplacement test = new LongestRepeatingCharacterReplacement();
+        Assert.assertEquals(6, test.characterReplacement("AAAABCDEFBA", 2));
     }
 }

@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.game.weekly309;
+package lpf.learn.leetcode.tags.slidingwindow;
 
 
 /** [2401] 最长优雅子数组
@@ -31,18 +31,12 @@ package lpf.learn.leetcode.game.weekly309;
  */
 public class LongestNiceSubarray {
 
+
     public int longestNiceSubarray(int[] nums) {
-        int left  = 0, right = 1;
         int result = 1;
-        while (right < nums.length) {
-            int newLeft = check(nums, left, right);
-            if (left == newLeft) {
-                result = Math.max(result, right - left + 1);
-            } else {
-                left = newLeft;
-                right--;
-            }
-            right++;
+        for (int l = 0, r = 0; r < nums.length; r++) {
+            l = check(nums, l, r);
+            result = Math.max(result, r - l + 1);
         }
         return result;
     }
@@ -54,5 +48,36 @@ public class LongestNiceSubarray {
             if ((nums[right] & nums[i]) != 0) return i + 1;
         }
         return left;
+    }
+
+
+    public int longestNiceSubarray2(int[] nums) {
+        int[] cnt = new int[32];
+        int res = 0;
+        for (int l = 0, r = 0; r < nums.length; r++) {
+            codeCnt(cnt, nums[r], 1);
+
+            while (!check(cnt)) {
+                codeCnt(cnt, nums[l++], -1);
+            }
+            res = Math.max(res, r - l + 1);
+        }
+        return res;
+    }
+
+    private void codeCnt(int[] cnt, int v, int f) {
+        int i = 0;
+        while (v != 0) {
+            if ((v & 1) == 1) cnt[i] += f;
+
+            v >>= 1;
+            i++;
+        }
+    }
+    private boolean check(int[] cnt) {
+        for (int i : cnt) {
+            if (i > 1) return false;
+        }
+        return true;
     }
 }
