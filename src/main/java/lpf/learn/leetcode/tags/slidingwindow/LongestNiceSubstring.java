@@ -40,6 +40,38 @@ package lpf.learn.leetcode.tags.slidingwindow;
  */
 public class LongestNiceSubstring {
     public String longestNiceSubstring(String s) {
-        return "";
+        char[] chars = s.toCharArray();
+        String res = "";
+
+        for (int t = 1; t <= 26; t++) {
+            int[] cnt = new int[123];
+            int tot = 0, less = 0;
+
+            for (int l = 0, r = 0; r < s.length(); r++) {
+                cnt[chars[r]]++;
+                int i = chars[r] > 'Z' ? chars[r] - 'a' : chars[r] - 'A';
+
+                if (cnt[i + 'a'] + cnt[i + 'A'] == 1) {
+                    tot++;
+                    less++;
+                }
+                if (cnt[chars[r]] == 1 && cnt[i + 'A'] > 0 && cnt[i + 'a'] > 0) less--;
+
+                while (tot > t) {
+                    char c = chars[l++];
+                    int j = c > 'Z' ? c - 'a' : c - 'A';
+
+                    if (cnt[j + 'a'] + cnt[j + 'A'] == 1) {
+                        tot--;
+                        less--;
+                    }
+                    if (cnt[c] == 1 && cnt[j + 'A'] > 0 && cnt[j + 'a'] > 0) less++;
+                    cnt[c]--;
+                }
+                if (less == 0 && res.length() < r - l + 1)
+                    res = s.substring(l, r + 1);
+            }
+        }
+        return res;
     }
 }

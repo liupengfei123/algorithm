@@ -30,17 +30,20 @@ import java.util.Arrays;
 public class ThreeSumClosest {
 
     public int threeSumClosest(int[] nums, int target) {
-        int n = nums.length;
         Arrays.sort(nums);
+        int n = nums.length, res = Integer.MAX_VALUE / 2;
 
-        int res = 100000;
         for (int i = 0; i < n; i++) {
             int l = i + 1, r = n - 1;
-            while (l < r) {
-                int temp = nums[i] + nums[l] + nums[r];
-                if (Math.abs(res - target) > Math.abs(temp - target)) res = temp;
 
-                if (temp < target) l++;
+            while (l < r) {
+                int sum = nums[i] + nums[l] + nums[r];
+                if (Math.abs(sum - target) < Math.abs(res - target)) {
+                    res = sum;
+                }
+                if (sum == target) return res;
+
+                if (sum < target) l++;
                 else r--;
             }
         }

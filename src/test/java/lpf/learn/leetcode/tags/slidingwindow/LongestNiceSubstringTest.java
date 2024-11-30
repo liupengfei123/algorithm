@@ -35,4 +35,10 @@ public class LongestNiceSubstringTest {
         Assert.assertEquals("cChH", test.longestNiceSubstring("cChH"));
     }
 
+    @Test
+    public void test6(){
+        LongestNiceSubstring test = new LongestNiceSubstring();
+        Assert.assertEquals("ddD", test.longestNiceSubstring("zUXxizubXNKAUGXTjmAXkpzNZMnRBgddDUAWPUa"));
+    }
+
 }

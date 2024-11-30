@@ -26,9 +26,67 @@ package lpf.learn.leetcode.tags.slidingwindow;
  </ul>
  */
 public class LongestSubstringWithAtLeastKRepeatingCharacters {
+
+
+
     public int longestSubstring(String s, int k) {
+        char[] chars = s.toCharArray();
+        int n = s.length(), res = 0;
 
+        for (int t = 1; t <= 26; t++) {
+            int[] cnt = new int[26];
+            int tot = 0, less = 0;
 
-        return 1;
+            for (int l = 0, r = 0; r < n; r++) {
+                int i = chars[r] - 'a';
+                cnt[i]++;
+                if (cnt[i] == 1) {
+                    tot++;
+                    less++;
+                }
+                if (cnt[i] == k) less--;
+
+                while (tot > t) {
+                    int j = chars[l++] - 'a';
+                    if (cnt[j] == 1) {
+                        tot--;
+                        less--;
+                    }
+                    if (cnt[j] == k) less++;
+
+                    cnt[j]--;
+                }
+                if (less == 0) res = Math.max(res, r - l + 1);
+            }
+        }
+        return res;
     }
+
+
+    public int longestSubstring2(String s, int k) {
+        return dfs(s.toCharArray(), k, 0, s.length() - 1);
+    }
+    private int dfs(char[] chars, int k, int l, int r) {
+        if (l > r) return 0;
+
+        int[] cnt = new int[26];
+        for (int i = l; i <= r; i++) cnt[chars[i] - 'a']++;
+
+        boolean flag = true;
+        for (int v : cnt) if (v > 0 && v < k) flag = false;
+        if (flag) return r - l + 1;
+
+        int res = 0, i = l, j = i;
+        for (; i <= r; i++) {
+            int v = cnt[chars[i] - 'a'];
+            if (v >= k) continue;
+
+            res = Math.max(res, dfs(chars, k, j, i - 1));
+            j = i + 1;
+        }
+        res = Math.max(res, dfs(chars, k, j, i - 1));
+
+        return res;
+    }
+
 }
