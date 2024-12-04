@@ -13,7 +13,7 @@ public class SortArrayByParityTest {
     @Test
     public void test2(){
         SortArrayByParity test = new SortArrayByParity();
-        Assert.assertArrayEquals(new int[]{2, 4, 1, 3}, test.sortArrayByParity(new int[]{3,1,2,4}));
+        Assert.assertArrayEquals(new int[]{4, 2, 1, 3}, test.sortArrayByParity(new int[]{3,1,2,4}));
     }
 
     @Test

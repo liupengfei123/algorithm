@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.learn.array;
+package lpf.learn.leetcode.tags.twopoint;
 
 
 import org.junit.Assert;
@@ -14,11 +14,8 @@ public class MoveZeroesTest {
         moveZeroes.moveZeroes(ints1);
         Assert.assertArrayEquals(new int[]{1,1,2}, ints1);
 
-
         int[] ints2 = {0, 1, 0, 1, 2};
         moveZeroes.moveZeroes(ints2);
         Assert.assertArrayEquals(new int[]{1, 1, 2, 0, 0}, ints2);
-
-
     }
 }

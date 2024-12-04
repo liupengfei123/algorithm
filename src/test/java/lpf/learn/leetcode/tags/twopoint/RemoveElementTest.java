@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.learn.array;
+package lpf.learn.leetcode.tags.twopoint;
 
 
 import org.junit.Assert;

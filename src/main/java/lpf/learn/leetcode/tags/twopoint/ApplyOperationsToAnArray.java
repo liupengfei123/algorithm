@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.tags.array;
+package lpf.learn.leetcode.tags.twopoint;
 
 /** 2460 对数组执行操作
  <p>给你一个下标从 <strong>0</strong> 开始的数组 <code>nums</code> ，数组大小为 <code>n</code> ，且由 <strong>非负</strong> 整数组成。</p>
@@ -41,17 +41,19 @@ package lpf.learn.leetcode.tags.array;
  */
 public class ApplyOperationsToAnArray {
     public int[] applyOperations(int[] nums) {
-        int n = nums.length, j = 0;
-        int[] res = new int[n];
-
+        int n = nums.length, k = 0;
         for (int i = 0; i < n - 1; i++) {
             if (nums[i] == nums[i + 1]) {
                 nums[i] += nums[i + 1];
-                nums[i + 1] = 0;
+                nums[++i] = 0;
             }
-            if (nums[i] != 0) res[j++] = nums[i];
         }
-        if (nums[n - 1] != 0) res[j] = nums[n - 1];
-        return res;
+
+        for (int i = 0; i < n; i++) {
+            if (nums[i] != 0) nums[k++] = nums[i];
+        }
+        for (int i = k; i < n; i++) nums[i] = 0;
+
+        return nums;
     }
 }
