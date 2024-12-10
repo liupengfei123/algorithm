@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.tags.array;
+package lpf.learn.leetcode.tags.twopoint;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -37,5 +37,11 @@ public class ShortestUnsortedContinuousSubarrayTest {
     public void test5(){
         ShortestUnsortedContinuousSubarray test = new ShortestUnsortedContinuousSubarray();
         Assert.assertEquals(0, test.findUnsortedSubarray(new int[]{2, 4, 8, 9, 10, 15}));
+    }
+
+    @Test
+    public void test6(){
+        ShortestUnsortedContinuousSubarray test = new ShortestUnsortedContinuousSubarray();
+        Assert.assertEquals(0, test.findUnsortedSubarray(new int[]{1, 2, 3, 3, 3, 3}));
     }
 }

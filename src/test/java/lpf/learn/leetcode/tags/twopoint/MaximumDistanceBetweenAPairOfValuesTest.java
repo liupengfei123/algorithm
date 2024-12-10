@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.game.weekly240;
+package lpf.learn.leetcode.tags.twopoint;
 
 import org.junit.Assert;
 import org.junit.Test;

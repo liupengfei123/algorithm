@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.game.weekly301;
+package lpf.learn.leetcode.tags.twopoint;
 
 /** [2337] 移动片段得到字符串
  * <p>给你两个字符串 <code>start</code> 和 <code>target</code> ，长度均为 <code>n</code> 。每个字符串 <strong>仅</strong> 由字符 <code>'L'</code>、<code>'R'</code> 和 <code>'_'</code> 组成，其中：</p>
