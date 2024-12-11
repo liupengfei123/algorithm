@@ -1,57 +1,58 @@
 package lpf.learn.leetcode.tags.twopoint;
 
+import java.util.Collections;
 import java.util.List;
 
-/** [524]通过删除字母匹配到字典里最长单词
- * 给定一个字符串和一个字符串字典，找到字典里面最长的字符串，该字符串可以通过删除给定字符串的某些字符来得到。如果答案不止一个，返回长度最长且字典顺序最小的字符
- * 串。如果答案不存在，则返回空字符串。
- *
- * 示例 1:
- * 输入: s = "abpcplea", d = ["ale","apple","monkey","plea"]
- * 输出:"apple"
- *
- * 示例 2:
- * 输入: s = "abpcplea", d = ["a","b","c"]
- * 输出: "a"
- *
- * 说明:
- * 所有输入的字符串只包含小写字母。
- * 字典的大小不会超过 1000。
- * 所有输入的字符串长度不会超过 1000。
+
+/** 524 通过删除字母匹配到字典里最长单词
+ <p>给你一个字符串 <code>s</code> 和一个字符串数组 <code>dictionary</code> ，找出并返回&nbsp;<code>dictionary</code> 中最长的字符串，该字符串可以通过删除 <code>s</code> 中的某些字符得到。</p>
+ <p>如果答案不止一个，返回长度最长且字母序最小的字符串。如果答案不存在，则返回空字符串。</p>
+
+ <p><strong>示例 1：</strong></p>
+ <pre>
+ <strong>输入：</strong>s = "abpcplea", dictionary = ["ale","apple","monkey","plea"]
+ <strong>输出：</strong>"apple"
+ </pre>
+
+ <p><strong>示例 2：</strong></p>
+ <pre>
+ <strong>输入：</strong>s = "abpcplea", dictionary = ["a","b","c"]
+ <strong>输出：</strong>"a"
+ </pre>
+
+ <p><strong>提示：</strong></p>
+ <ul>
+ <li><code>1 &lt;= s.length &lt;= 1000</code></li>
+ <li><code>1 &lt;= dictionary.length &lt;= 1000</code></li>
+ <li><code>1 &lt;= dictionary[i].length &lt;= 1000</code></li>
+ <li><code>s</code> 和 <code>dictionary[i]</code> 仅由小写英文字母组成</li>
+ </ul>
  */
 public class LongestWordInDictionaryThroughDeleting {
 
-    public String findLongestWord(String s, List<String> d) {
-        String result = "";
+    public String findLongestWord(String s, List<String> dictionary) {
+        Collections.sort(dictionary);
 
-        for (String str : d) {
-            if (isSubString(s, str)) {
-                if ((result.length() < str.length()) || (result.length() == str.length() && result.compareTo(str) > 0)) {
-                    result = str;
-                }
+        String res = "";
+        for (String t : dictionary) {
+            if (solve(s, t) && t.length() > res.length()) {
+                res = t;
             }
         }
-        return result;
+        return res;
     }
 
-    private boolean matchString(String source, String target) {
-        int s = source.length() - 1, t = target.length() - 1;
-        while (s >= t && t >= 0) {
-            if (source.charAt(s--) == target.charAt(t)) {
-                t--;
-            }
+    private boolean solve(String s, String t) {
+        char[] sc = s.toCharArray(), tc = t.toCharArray();
+        int n = s.length(), m = t.length();
+        int i = 0, j = 0;
+
+        while (i < n && j < m) {
+            if (sc[i] == tc[j]) j++;
+
+            i++;
         }
-        return t == -1;
+        return j >= m;
     }
 
-
-
-    private boolean isSubString(String source, String sub) {
-        int subLen = sub.length(), j = -1;
-        for(int i = 0; i < subLen; i++) {
-            j = source.indexOf(sub.charAt(i), j + 1);
-            if(j == -1) return false;
-        }
-        return true;
-    }
 }
