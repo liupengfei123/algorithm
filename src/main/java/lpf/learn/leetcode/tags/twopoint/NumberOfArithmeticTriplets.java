@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.tags.array;
+package lpf.learn.leetcode.tags.twopoint;
 
 /** 2367 算术三元组的数目
  <p>给你一个下标从 <strong>0</strong> 开始、<strong>严格递增</strong> 的整数数组 <code>nums</code> 和一个正整数 <code>diff</code> 。如果满足下述全部条件，则三元组 <code>(i, j, k)</code> 就是一个 <strong>算术三元组</strong> ：</p>
@@ -39,9 +39,25 @@ public class NumberOfArithmeticTriplets {
         boolean[] value = new boolean[310];
         for (int num : nums) value[num] = true;
 
-        int res = 0;
+        int tdiff = diff * 2, res = 0;
         for (int num : nums) {
-            if (value[num + diff] && value[num + (diff << 1)]) res++;
+            if (value[num + diff] && value[num + tdiff]) res++;
+        }
+        return res;
+    }
+
+    public int arithmeticTriplets2(int[] nums, int diff) {
+        int n = nums.length, res = 0;
+
+        for (int i = 0, j = 1, z = 2; i < n; i++) {
+            while (j < n && nums[j] - nums[i] < diff) j++;
+            while (z < n && nums[z] - nums[i] < diff * 2) z++;
+
+            if (j >= n || z >= n) break;
+
+            if (nums[j] - nums[i] == diff && diff == nums[z] - nums[j]) {
+                res++;
+            }
         }
         return res;
     }

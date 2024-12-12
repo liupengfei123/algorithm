@@ -1,7 +1,8 @@
-package lpf.learn.leetcode.tags.array;
+package lpf.learn.leetcode.tags.twopoint;
 
 
 import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * 795 区间子数组个数
@@ -30,6 +31,7 @@ import java.util.LinkedList;
  */
 public class NumberOfSubarraysWithBoundedMaximum {
 
+
     public int numSubarrayBoundedMax(int[] nums, int left, int right) {
         int res = 0, last1 = -1, last2 = -1;
 
@@ -46,30 +48,26 @@ public class NumberOfSubarraysWithBoundedMaximum {
         return res;
     }
 
+
     public int numSubarrayBoundedMax2(int[] nums, int left, int right) {
-        LinkedList<Integer> list = new LinkedList<>();
+        Queue<Integer> index = new LinkedList<>();
+        int n = nums.length, res = 0;
 
-        int result = 0;
-        int l = 0, r = 0, n = nums.length;
-
-        while (r < n) {
+        for (int l = 0, r = 0; l < n; l++) {
             while (r < n && nums[r] <= right) {
-                if (nums[r] >= left) list.add(r);
-
+                if (nums[r] >= left) index.add(r);
                 r++;
             }
-            while (l < r && !list.isEmpty()) {
-                int temp = list.getFirst();
-
-                result += r - temp;
-
-                if (l++ == temp) list.removeFirst();
+            if (nums[l] > right) {
+                r = l + 1;
+                continue;
             }
-
-            while (r < n && nums[r] > right) r++;
-
-            l = r;
+            if (!index.isEmpty()) {
+                Integer peek = index.peek();
+                res += r - peek;
+                if (l == peek) index.poll();
+            }
         }
-        return result;
+        return res;
     }
 }

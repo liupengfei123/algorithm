@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.game.weekly332;
+package lpf.learn.leetcode.tags.twopoint;
 
 import java.util.Arrays;
 
@@ -37,42 +37,19 @@ public class CountTheNumberOfFairPairs {
 
     public long countFairPairs(int[] nums, int lower, int upper) {
         Arrays.sort(nums);
+        int n = nums.length;
         long res = 0;
 
-        for (int num : nums) {
-            if (lower <= 2 * num && 2 * num <= upper) res -= 1;
+        for (int i = 0, l = n - 1, r = n - 1; i < n; i++) {
+            while (l >= 0 && nums[l] + nums[i] >= lower) l--;
+            while (r >= 0 && nums[r] + nums[i] > upper) r--;
 
-            int l = bsearchLeft(nums, lower - num);
-            int r = bsearchRight(nums, upper - num);
+            if (l > r) break;
 
-            if ((r - l) == 0 && (nums[l] < lower - num || nums[r] > upper - num)) {
-                continue;
-            }
-            res += (r - l) + 1;
+            res += r - l + (l < i && i <= r ? -1 : 0);
         }
+
         return res / 2;
     }
 
-
-    // 区间[l, r]被划分成[l, mid]和[mid + 1, r]时使用：
-    int bsearchLeft(int[] nums, int key) {
-        int l = 0,  r = nums.length - 1;
-        while (l < r)  {
-            int mid = l + r >> 1;
-            if (nums[mid] >= key) r = mid;    // check()判断mid是否满足性质
-            else l = mid + 1;
-        }
-        return l;
-    }
-
-    // 区间[l, r]被划分成[l, mid]和[mid + 1, r]时使用：
-    int bsearchRight(int[] nums, int key) {
-        int l = 0,  r = nums.length - 1;
-        while (l < r)  {
-            int mid = l + r + 1 >> 1;
-            if (nums[mid] <= key) l = mid;
-            else r = mid - 1;
-        }
-        return l;
-    }
 }
