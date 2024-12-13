@@ -1,48 +1,52 @@
 package lpf.learn.leetcode.tags.binarysearch;
 
-/** [744] 寻找比目标字母大的最小字母
- * 给你一个排序后的字符列表 letters ，列表中只包含小写英文字母。另给出一个目标字母 target，请你寻找在这一有序列表里比目标字母大的最小字母。
- * 在比较时，字母是依序循环出现的。举个例子：
- * 如果目标字母 target = 'z' 并且字符列表为 letters = ['a', 'b']，则答案返回 'a'
- *
- * 示例 1：
- * 输入: letters = ["c", "f", "j"]，target = "a"
- * 输出: "c"
- *
- * 示例 2:
- * 输入: letters = ["c","f","j"], target = "c"
- * 输出: "f"
- *
- * 示例 3:
- * 输入: letters = ["c","f","j"], target = "d"
- * 输出: "f"
- *
- * 提示：
- * 2 <= letters.length <= 10⁴
- * letters[i] 是一个小写字母
- * letters 按非递减顺序排序
- * letters 最少包含两个不同的字母
- * target 是一个小写字母
+
+/** 744 寻找比目标字母大的最小字母
+ <p>给你一个字符数组 <code>letters</code>，该数组按<strong>非递减顺序</strong>排序，以及一个字符 <code>target</code>。<code>letters</code>&nbsp;里<strong>至少有两个不同</strong>的字符。</p>
+ <p>返回&nbsp;<code>letters</code>&nbsp;中大于 <code>target</code> 的最小的字符。如果不存在这样的字符，则返回&nbsp;<code>letters</code> 的第一个字符。</p>
+
+ <p><strong>示例 1：</strong></p>
+ <pre>
+ <strong>输入: </strong>letters = ["c", "f", "j"]，target = "a"
+ <strong>输出:</strong> "c"
+ <strong>解释：</strong>letters 中字典上比 'a' 大的最小字符是 'c'。</pre>
+
+ <p><strong>示例 2:</strong></p>
+ <pre>
+ <strong>输入:</strong> letters = ["c","f","j"], target = "c"
+ <strong>输出:</strong> "f"
+ <strong>解释：</strong>letters 中字典顺序上大于 'c' 的最小字符是 'f'。</pre>
+
+ <p><strong>示例 3:</strong></p>
+ <pre>
+ <strong>输入:</strong> letters = ["x","x","y","y"], target = "z"
+ <strong>输出:</strong> "x"
+ <strong>解释：</strong>letters 中没有一个字符在字典上大于 'z'，所以我们返回 letters[0]。</pre>
+
+ <p><strong>提示：</strong></p>
+ <ul>
+ <li><code>2 &lt;= letters.length &lt;= 10<sup>4</sup></code></li>
+ <li><code>letters[i]</code>&nbsp;是一个小写字母</li>
+ <li><code>letters</code> 按<strong>非递减顺序</strong>排序</li>
+ <li><code>letters</code> 最少包含两个不同的字母</li>
+ <li><code>target</code> 是一个小写字母</li>
+ </ul>
  */
 public class FindSmallestLetterGreaterThanTarget {
     public char nextGreatestLetter(char[] letters, char target) {
-        int length = letters.length;
-        if (letters[length - 1] <= target) {
-            return letters[0];
-        }
+        int n = letters.length;
+        if (letters[n - 1] <= target) return letters[0];
 
-        int left = 0, right = length - 1;
+        int l = 0, r = n;
+        while (l < r) {
+            int mid = (l + r) / 2;
 
-        while (left < right) {
-            int mid = (right - left) / 2 + left;
-
-            if (letters[mid] > target) {
-                right = mid;
+            if (letters[mid] <= target) {
+                l = mid + 1;
             } else {
-                left = mid + 1;
+                r = mid;
             }
         }
-
-        return letters[left];
+        return letters[r];
     }
 }
