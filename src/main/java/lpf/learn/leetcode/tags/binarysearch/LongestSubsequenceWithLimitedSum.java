@@ -1,8 +1,6 @@
-package lpf.learn.leetcode.game.weekly308;
+package lpf.learn.leetcode.tags.binarysearch;
 
 import java.util.Arrays;
-import java.util.Map;
-import java.util.TreeMap;
 
 /** [2389] 和有限的最长子序列
  <p>给你一个长度为 <code>n</code>&nbsp;的整数数组 <code>nums</code> ，和一个长度为 <code>m</code> 的整数数组 <code>queries</code> 。</p>
@@ -37,22 +35,27 @@ public class LongestSubsequenceWithLimitedSum {
 
     public int[] answerQueries(int[] nums, int[] queries) {
         Arrays.sort(nums);
+        int n = nums.length, m = queries.length;
+        int[] preSum = new int[n + 1];
+        for (int i = 0; i < n; i++) preSum[i + 1] = preSum[i] + nums[i];
 
-        TreeMap<Integer, Integer> map = new TreeMap<>();
-        map.put(0, 0);
-
-        int lastSum = 0;
-        for (int i = 0; i < nums.length; i++) {
-            lastSum = lastSum + nums[i];
-            map.put(lastSum, i + 1);
+        int[] res = new int[m];
+        for (int i = 0; i < m; i++) {
+            res[i] = solve(preSum, n, queries[i]);
         }
+        return res;
+    }
 
-        int[] result = new int[queries.length];
-        for (int i = 0; i < queries.length; i++) {
-            Map.Entry<Integer, Integer> entry = map.floorEntry(queries[i]);
-            result[i] = entry.getValue();
+    private int solve(int[] preSum, int n, int target) {
+        int l = 0, r = n;
+        while (l < r) {
+            int mid = (l + r + 1) / 2;
+            if (preSum[mid] <= target) {
+                l = mid;
+            } else {
+                r = mid - 1;
+            }
         }
-
-        return result;
+        return l;
     }
 }

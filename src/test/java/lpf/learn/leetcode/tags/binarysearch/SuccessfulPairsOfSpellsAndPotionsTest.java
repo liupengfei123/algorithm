@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.game.biweekly80;
+package lpf.learn.leetcode.tags.binarysearch;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -20,5 +20,12 @@ public class SuccessfulPairsOfSpellsAndPotionsTest {
     public void test3(){
         SuccessfulPairsOfSpellsAndPotions test = new SuccessfulPairsOfSpellsAndPotions();
         Assert.assertArrayEquals(new int[]{1,0,0}, test.successfulPairs(new int[]{3,1,2}, new int[]{7,5,8}, 24));
+    }
+
+
+    @Test
+    public void test4(){
+        SuccessfulPairsOfSpellsAndPotions test = new SuccessfulPairsOfSpellsAndPotions();
+        Assert.assertArrayEquals(new int[]{2,0,1}, test.successfulPairs(new int[]{3,1,2}, new int[]{1,2,3}, 6));
     }
 }
