@@ -1,5 +1,6 @@
 package lpf.learn.leetcode.tags.array;
 
+import lpf.learn.leetcode.tags.binarysearch.CapacityToShipPackagesWithinDDays;
 import org.junit.Assert;
 import org.junit.Test;
 
