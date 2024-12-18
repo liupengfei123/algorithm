@@ -28,17 +28,17 @@ package lpf.learn.leetcode.tags.binarysearch;
  */
 public class HIndexIi {
     public int hIndex(int[] citations) {
-        int left = 0, right = citations.length;
-        int mid;
-        while (left < right) {
-            mid = (right - left + 1) / 2 + left;
+        int n = citations.length, l = 0, r = n - 1;
+        if (citations[r] == 0) return 0;
 
-            if (citations[citations.length - mid] >= mid) {
-                left = mid;
+        while (l < r) {
+            int mid = (l + r) / 2;
+            if (citations[mid] >= n - mid) {
+                r = mid;
             } else {
-                right = mid - 1;
+                l = mid + 1;
             }
         }
-        return left;
+        return n - r;
     }
 }
