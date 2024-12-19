@@ -1,7 +1,5 @@
-package lpf.learn.leetcode.tags.array;
+package lpf.learn.leetcode.tags.binarysearch;
 
-
-import java.util.stream.IntStream;
 
 /** 1760 袋子里最少数目的球
  <p>给你一个整数数组 <code>nums</code> ，其中 <code>nums[i]</code> 表示第 <code>i</code> 个袋子里球的数目。同时给你一个整数 <code>maxOperations</code> 。</p>
@@ -52,33 +50,27 @@ import java.util.stream.IntStream;
  </ul>
  */
 public class MinimumLimitOfBallsInABag {
-    private int[] nums;
-    private int maxOperations;
 
     public int minimumSize(int[] nums, int maxOperations) {
-        this.nums = nums;
-        this.maxOperations = maxOperations;
-
-        int left = 1, right = IntStream.of(nums).max().getAsInt();
-
-        while (left < right) {
-            int mid = (right + left) >> 1;
-
-            if (check(mid)) {
-                right = mid;
+        int l = 1, r = 1000_000_000;
+        while (l < r) {
+            int mid = l + (r - l) / 2;
+            if (check(nums, maxOperations, mid)) {
+                r = mid;
             } else {
-                left = mid + 1;
+                l = mid + 1;
             }
         }
-        return right;
+        return r;
     }
 
-
-    private boolean check(int maxNum) {
-        int opt = 0;
+    private boolean check(int[] nums, int opt, int max) {
+        int c = 0;
         for (int num : nums) {
-            opt += ((num - 1) / maxNum);
+            c += (num - 1) / max ;
         }
-        return opt <= maxOperations;
+        return c <= opt;
     }
+
+
 }
