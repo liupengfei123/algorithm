@@ -39,10 +39,7 @@ package lpf.learn.leetcode.tags.twopoint;
  */
 public class CountPairsOfNodes {
     public int[] countPairs(int n, int[][] edges, int[] queries) {
-
-
-
-
+        //todo
         return null;
     }
 }
