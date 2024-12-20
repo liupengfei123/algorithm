@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.game.weekly325;
+package lpf.learn.leetcode.tags.binarysearch;
 
 import java.util.Arrays;
 
@@ -43,28 +43,31 @@ public class MaximumTastinessOfCandyBasket {
 
     public int maximumTastiness(int[] price, int k) {
         Arrays.sort(price);
-        int n = price.length;
-        int l = Integer.MAX_VALUE, r = (price[n - 1] - price[0]) / (k - 1);
-        for (int i = 1; i < n; i++)
-            l = Math.min(l, price[i] - price[i - 1]);
 
+        int l = 0, r = price[price.length - 1] - price[0];
         while (l < r) {
-            int mid = ((r - l + 1) >> 1) + l;
-            if (k > getCnt(price, mid))
-                r = mid - 1;
-            else
+            int mid = l + (r - l + 1) / 2;
+            if (check(price, k, mid)) {
                 l = mid;
+            } else {
+                r = mid - 1;
+            }
         }
-        return r;
+        return l;
     }
 
-    private static int getCnt(int[] price, int x) {
-        int cnt = 1;
-        for (int l = 0, r = 1; r < price.length; r++)
-            if (x <= price[r] - price[l]) {
+    private boolean check(int[] price, int k, int x) {
+        int n = price.length, cnt = 0;
+
+        for (int i = 0, j = 0; i < n; i = j) {
+            while (j < n && price[j] - price[i] < x) j++;
+
+            if (j < n && price[j] - price[i] >= x) {
                 cnt++;
-                l = r;
             }
-        return cnt;
+        }
+        return cnt + 1 >= k;
     }
+
+
 }
