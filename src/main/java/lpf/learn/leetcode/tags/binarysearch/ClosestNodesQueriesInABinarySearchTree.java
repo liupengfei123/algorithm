@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.game.weekly320;
+package lpf.learn.leetcode.tags.binarysearch;
 
 import lpf.learn.leetcode.entity.TreeNode;
 
@@ -46,7 +46,7 @@ import java.util.TreeSet;
  */
 public class ClosestNodesQueriesInABinarySearchTree {
     public List<List<Integer>> closestNodes(TreeNode root, List<Integer> queries) {
-        TreeSet<Integer> treeSet = new TreeSet();
+        TreeSet<Integer> treeSet = new TreeSet<>();
 
         bfs(root, treeSet);
 
