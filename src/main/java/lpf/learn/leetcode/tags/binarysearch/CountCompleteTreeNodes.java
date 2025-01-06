@@ -37,6 +37,7 @@ import lpf.learn.leetcode.entity.TreeNode;
  */
 public class CountCompleteTreeNodes {
     public int countNodes(TreeNode root) {
+        // todo 复查
         if (root == null) {
             return 0;
         }
