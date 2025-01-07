@@ -1,6 +1,7 @@
 package lpf.learn.leetcode.tags.stack;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /** 1475 商品折扣后的最终价格
  <p>给你一个数组&nbsp;<code>prices</code>&nbsp;，其中&nbsp;<code>prices[i]</code>&nbsp;是商店里第&nbsp;<code>i</code>&nbsp;件商品的价格。</p>
@@ -37,13 +38,20 @@ import java.util.Stack;
 public class FinalPricesWithASpecialDiscountInAShop {
     public int[] finalPrices(int[] prices) {
         int n = prices.length;
-        Stack<Integer> stack = new Stack<>();
-        for (int i = 0; i < n; i++) {
-            while (!stack.isEmpty() &&  prices[stack.peek()] >= prices[i]) {
-                prices[stack.pop()] -= prices[i];
+        Deque<Integer> stack = new ArrayDeque<>(n);
+
+        int[] res = new int[n];
+        for (int j = 0; j < n; j++) {
+            while (!stack.isEmpty() && prices[stack.peek()] >= prices[j]) {
+                int i = stack.pop();
+                res[i] = prices[i] - prices[j];
             }
-            stack.push(i);
+            stack.push(j);
         }
-        return prices;
+        while (!stack.isEmpty()) {
+            int i = stack.pop();
+            res[i] = prices[i];
+        }
+        return res;
     }
 }

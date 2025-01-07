@@ -2,6 +2,9 @@ package lpf.learn.leetcode.tags.stack;
 
 import lpf.learn.leetcode.entity.ListNode;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 /** 1019 链表中的下一个更大节点
  <p>给定一个长度为&nbsp;<code>n</code>&nbsp;的链表&nbsp;<code>head</code></p>
  <p>对于列表中的每个节点，查找下一个 <strong>更大节点</strong> 的值。也就是说，对于每个节点，找到它旁边的第一个节点的值，这个节点的值 <strong>严格大于</strong> 它的值。</p>
@@ -33,18 +36,14 @@ public class NextGreaterNodeInLinkedList {
         int n = 0;
         for (ListNode node = head; node != null; node = node.next) n++;
 
-        int[] list = new int[n];
-        int[] stack = new int[n];
         int[] res = new int[n];
-        int si = -1, i = 0;
-
-        for (ListNode node = head; node != null; node = node.next, i++) {
-            list[i] = node.val;
-
-            while (si != -1 && list[stack[si]] < node.val) {
-                res[stack[si--]] =list[i];
+        Deque<int[]> stack = new ArrayDeque<>();
+        ListNode node = head;
+        for (int i = 0; i < n; i++, node = node.next) {
+            while (!stack.isEmpty() && stack.peek()[0] < node.val) {
+                res[stack.pop()[1]] = node.val;
             }
-            stack[++si] = i;
+            stack.push(new int[]{node.val, i});
         }
         return res;
     }

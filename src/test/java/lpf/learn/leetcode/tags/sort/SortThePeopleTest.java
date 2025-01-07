@@ -30,9 +30,4 @@ public class SortThePeopleTest {
                 test.sortPeople(new String[]{"IEO","Sgizfdfrims","QTASHKQ","Vk","RPJOFYZUBFSIYp","EPCFFt","VOYGWWNCf","WSpmqvb"}, new int[]{17233,32521,14087,42738,46669,65662,43204,8224}));
     }
 
-    @Test
-    public void test5(){
-        CarFleet test = new CarFleet();
-        Assert.assertEquals(0, test.carFleet(12, new int[]{}, new int[]{}));
-    }
 }

@@ -1,6 +1,7 @@
-package lpf.learn.leetcode.tags.design;
+package lpf.learn.leetcode.tags.stack;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /** 901 股票价格跨度
  <p>编写一个 <code>StockSpanner</code> 类，它收集某些股票的每日报价，并返回该股票当日价格的跨度。</p>
@@ -33,32 +34,19 @@ import java.util.Stack;
  </ol>
  */
 public class OnlineStockSpan {
-    private final Stack<Pair> stack;
-    private int ni;
+
+    private Deque<int[]> stack;
 
     public OnlineStockSpan() {
-        stack = new Stack<>();
-        stack.push(new Pair(Integer.MAX_VALUE, ni++));
+        stack = new ArrayDeque<>();
     }
 
     public int next(int price) {
-        while (stack.peek().v <= price) {
-            stack.pop();
+        int c = 1;
+        while (!stack.isEmpty() && stack.peek()[0] <= price) {
+            c += stack.poll()[1];
         }
-
-        int result = ni - stack.peek().i;
-        stack.push(new Pair(price, ni++));
-
-        return result;
-    }
-
-    static class Pair {
-        int v;
-        int i;
-
-        public Pair(int v, int i) {
-            this.v = v;
-            this.i = i;
-        }
+        stack.push(new int[]{price, c});
+        return c;
     }
 }

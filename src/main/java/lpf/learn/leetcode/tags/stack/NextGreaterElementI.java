@@ -1,56 +1,64 @@
 package lpf.learn.leetcode.tags.stack;
 
+
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Stack;
 
-/**
- * [496]下一个更大元素 I
- *
- * 给定两个 没有重复元素 的数组 nums1 和 nums2 ，其中nums1 是 nums2 的子集。找到 nums1 中每个元素在 nums2 中的下一个
- * 比其大的值。
- * nums1 中数字 x 的下一个更大元素是指 x 在 nums2 中对应位置的右边的第一个比 x 大的元素。如果不存在，对应位置输出 -1 。
- *
- * 示例 1:
- * 输入: nums1 = [4,1,2], nums2 = [1,3,4,2].
- * 输出: [-1,3,-1]
- * 解释:
- *    对于num1中的数字4，你无法在第二个数组中找到下一个更大的数字，因此输出 -1。
- *    对于num1中的数字1，第二个数组中数字1右边的下一个较大数字是 3。
- *    对于num1中的数字2，第二个数组中没有下一个更大的数字，因此输出 -1。
- *
- * 示例 2:
- * 输入: nums1 = [2,4], nums2 = [1,2,3,4].
- * 输出: [3,-1]
- * 解释:
- *    对于 num1 中的数字 2 ，第二个数组中的下一个较大数字是 3 。
- *    对于 num1 中的数字 4 ，第二个数组中没有下一个更大的数字，因此输出 -1 。
- * 提示：
- * nums1和nums2中所有元素是唯一的。
- * nums1和nums2 的数组大小都不超过1000。
+/** 496 下一个更大元素 I
+ <p><code>nums1</code>&nbsp;中数字&nbsp;<code>x</code>&nbsp;的 <strong>下一个更大元素</strong> 是指&nbsp;<code>x</code>&nbsp;在&nbsp;<code>nums2</code> 中对应位置 <strong>右侧</strong> 的 <strong>第一个</strong> 比&nbsp;<code>x</code><strong>&nbsp;</strong>大的元素。</p>
+ <p>给你两个<strong> 没有重复元素</strong> 的数组&nbsp;<code>nums1</code> 和&nbsp;<code>nums2</code> ，下标从 <strong>0</strong> 开始计数，其中<code>nums1</code>&nbsp;是&nbsp;<code>nums2</code>&nbsp;的子集。</p>
+ <p>对于每个 <code>0 &lt;= i &lt; nums1.length</code> ，找出满足 <code>nums1[i] == nums2[j]</code> 的下标 <code>j</code> ，并且在 <code>nums2</code> 确定 <code>nums2[j]</code> 的 <strong>下一个更大元素</strong> 。如果不存在下一个更大元素，那么本次查询的答案是 <code>-1</code> 。</p>
+ <p>返回一个长度为&nbsp;<code>nums1.length</code> 的数组<em> </em><code>ans</code><em> </em>作为答案，满足<em> </em><code>ans[i]</code><em> </em>是如上所述的 <strong>下一个更大元素</strong> 。</p>
+
+ <p><strong>示例 1：</strong></p>
+ <pre>
+ <strong>输入：</strong>nums1 = [4,1,2], nums2 = [1,3,4,2].
+ <strong>输出：</strong>[-1,3,-1]
+ <strong>解释：</strong>nums1 中每个值的下一个更大元素如下所述：
+ - 4 ，用加粗斜体标识，nums2 = [1,3,<strong>4</strong>,2]。不存在下一个更大元素，所以答案是 -1 。
+ - 1 ，用加粗斜体标识，nums2 = [<em><strong>1</strong></em>,3,4,2]。下一个更大元素是 3 。
+ - 2 ，用加粗斜体标识，nums2 = [1,3,4,<em><strong>2</strong></em>]。不存在下一个更大元素，所以答案是 -1 。</pre>
+
+ <p><strong>示例 2：</strong></p>
+ <pre>
+ <strong>输入：</strong>nums1 = [2,4], nums2 = [1,2,3,4].
+ <strong>输出：</strong>[3,-1]
+ <strong>解释：</strong>nums1 中每个值的下一个更大元素如下所述：
+ - 2 ，用加粗斜体标识，nums2 = [1,<em><strong>2</strong></em>,3,4]。下一个更大元素是 3 。
+ - 4 ，用加粗斜体标识，nums2 = [1,2,3,<em><strong>4</strong></em>]。不存在下一个更大元素，所以答案是 -1 。
+ </pre>
+
+ <p><strong>提示：</strong></p>
+ <ul>
+ <li><code>1 &lt;= nums1.length &lt;= nums2.length &lt;= 1000</code></li>
+ <li><code>0 &lt;= nums1[i], nums2[i] &lt;= 10<sup>4</sup></code></li>
+ <li><code>nums1</code>和<code>nums2</code>中所有整数 <strong>互不相同</strong></li>
+ <li><code>nums1</code> 中的所有整数同样出现在 <code>nums2</code> 中</li>
+ </ul>
+
+ <p><strong>进阶：</strong>你可以设计一个时间复杂度为 <code>O(nums1.length + nums2.length)</code> 的解决方案吗？</p>
  */
 public class NextGreaterElementI {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
-        if (nums1 == null || nums2 == null) {
-            return new int[0];
-        }
+        int n = nums1.length, m = nums2.length;
 
-        Stack<Integer> stack = new Stack<>();
         Map<Integer, Integer> map = new HashMap<>();
-        for (int i : nums2) {
-            while (!stack.isEmpty() && stack.peek() < i) {
-                map.put(stack.pop(), i);
-            }
-            stack.push(i);
-        }
-        while (!stack.isEmpty()) {
-            map.put(stack.pop(), -1);
-        }
+        for (int i = 0; i < n; i++) map.put(nums1[i], i);
 
-        int[] result = new int[nums1.length];
-        for (int i = 0; i < nums1.length; i++) {
-            result[i] = map.get(nums1[i]);
+        int[] res = new int[n];
+        Arrays.fill(res, -1);
+
+        Deque<Integer> stack = new ArrayDeque<>();
+        for (int i = 0; i < m; i++) {
+            while (!stack.isEmpty() && stack.peek() < nums2[i]) {
+                Integer index = map.get(stack.pop());
+                if (index != null) res[index] = nums2[i];
+            }
+            stack.push(nums2[i]);
         }
-        return result;
+        return res;
     }
 }
