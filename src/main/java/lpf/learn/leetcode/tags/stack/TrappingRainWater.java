@@ -1,7 +1,8 @@
 package lpf.learn.leetcode.tags.stack;
 
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /** 42 接雨水
  <p>给定&nbsp;<code>n</code> 个非负整数表示每个宽度为 <code>1</code> 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。</p>
@@ -28,65 +29,21 @@ import java.util.Stack;
  </ul>
  */
 public class TrappingRainWater {
+
     public int trap(int[] height) {
-        int n = height.length;
-        int[] preSum = new int[n + 1];
+        int n = height.length, sum = 0;
+        Deque<Integer> stack = new ArrayDeque<>();
+        for (int i = 0; i < n; i++) {
+            while (!stack.isEmpty() && height[stack.peek()] <= height[i]) {
+                int j = stack.pop();
 
-        for (int i = 0; i < height.length; i++)
-            preSum[i + 1] = preSum[i] + height[i];
+                if (stack.isEmpty()) break;
 
-        int result = 0;
-        for (int left = 0, right = 1; right < n; right++) {
-            if (height[left] > height[right])
-                continue;
-
-            result += (right - left - 1) * Math.min(height[right], height[left]) - (preSum[right] - preSum[left + 1]);
-            left = right;
-        }
-        for (int left = n - 1, right = n - 1; left >= 0; left--) {
-            if (height[left] <= height[right])
-                continue;
-
-            result += (right - left - 1) * Math.min(height[right], height[left]) - (preSum[right] - preSum[left + 1]);
-            right = left;
-        }
-        return result;
-    }
-
-
-    public int trap2(int[] height) {
-        int n = height.length;
-        int[] preSum = new int[n + 1];
-
-        for (int i = 0; i < height.length; i++) {
-            preSum[i + 1] = preSum[i] + height[i];
-        }
-
-        Stack<int[]> stack = new Stack<>();
-        int result = 0;
-        for (int i = 0; i < height.length; i++) {
-            int left = -1;
-            int tempSum = 0;
-            while (!stack.isEmpty() && height[stack.peek()[0]] <= height[i]) {
-                int[] pop = stack.pop();
-                left = pop[0];
-                tempSum = pop[1];
+                int z = stack.peek();
+                sum += (Math.min(height[i], height[z]) - height[j]) * (i - z - 1);
             }
-            if (stack.isEmpty()) {
-                result += tempSum;
-            } else {
-                left = stack.peek()[0];
-            }
-            int[] tempEntry = new int[]{i, 0};
-            stack.add(tempEntry);
-            if (left == -1) {
-                continue;
-            }
-            tempEntry[1] = (i - left - 1) * Math.min(height[i], height[left]) - (preSum[i] - preSum[left + 1]);
+            stack.push(i);
         }
-        while (!stack.isEmpty()) {
-            result += stack.pop()[1];
-        }
-        return result;
+        return sum;
     }
 }
