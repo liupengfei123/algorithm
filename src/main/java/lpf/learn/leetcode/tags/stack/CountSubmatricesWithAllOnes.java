@@ -1,6 +1,9 @@
 package lpf.learn.leetcode.tags.stack;
 
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 /** 1504 统计全 1 子矩形
  <p>给你一个&nbsp;<code>m x n</code>&nbsp;的二进制矩阵&nbsp;<code>mat</code>&nbsp;，请你返回有多少个&nbsp;<strong>子矩形</strong>&nbsp;的元素全部都是 1 。</p>
 
@@ -43,8 +46,30 @@ package lpf.learn.leetcode.tags.stack;
 public class CountSubmatricesWithAllOnes {
 
     public int numSubmat(int[][] mat) {
-        // todo
+        int n  = mat.length, m = mat[0].length;
+        int[][] rows = new int[n][m];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (mat[i][j] == 1) rows[i][j] = j == 0 ? 1 : rows[i][j - 1] + 1;
+            }
+        }
 
-        return 0;
+        int res = 0;
+        for (int j = 0; j < m; j++) {
+            Deque<int[]> stack = new ArrayDeque<>();
+            int sum = 0;
+            for (int i = 0; i < n; i++) {
+                int z = i;
+                while (!stack.isEmpty() && stack.peek()[0] >= rows[i][j]) {
+                    int[] pop = stack.pop();
+                    sum -= (pop[0] - rows[i][j]) * (z - pop[1]);
+                    z = pop[1];
+                }
+                sum += rows[i][j];
+                res += sum;
+                stack.push(new int[] {rows[i][j], z});
+            }
+        }
+        return res;
     }
 }
