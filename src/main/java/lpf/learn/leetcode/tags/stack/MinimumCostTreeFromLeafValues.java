@@ -1,7 +1,5 @@
 package lpf.learn.leetcode.tags.stack;
 
-import java.util.Stack;
-
 /** 1130 叶值的最小代价生成树
  <p>给你一个正整数数组&nbsp;<code>arr</code>，考虑所有满足以下条件的二叉树：</p>
  <ul>
@@ -36,23 +34,7 @@ import java.util.Stack;
  */
 public class MinimumCostTreeFromLeafValues {
     public int mctFromLeafValues(int[] arr) {
-        // 给定一个数组 arr，不断地合并相邻的数，合并代价为两个数的乘积，合并之后的数为两个数的最大值，直到数组只剩一个数，求最小合并代价和
-        // 数值越大的叶子节点 越靠近根节点
-        Stack<Integer> stack = new Stack<>();
-        int res = 0;
-        for (int x : arr) {
-            while (!stack.isEmpty() && stack.peek() <= x) {
-                Integer y = stack.pop();
-
-                if (!stack.isEmpty() && stack.peek() < x) {
-                    res += y * stack.peek();
-                } else {
-                    res += x * y;
-                }
-            }
-            stack.push(x);
-        }
-        while (stack.size() > 1) res += stack.pop() * stack.peek();
-        return res;
+        // todo
+        return 0;
     }
 }
