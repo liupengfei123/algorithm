@@ -1,6 +1,4 @@
-package lpf.learn.leetcode.game.weekly345;
-
-import java.util.Arrays;
+package lpf.learn.leetcode.tags.graph;
 
 /** [2684] 矩阵中移动的最大次数
  <p>给你一个下标从 <strong>0</strong> 开始、大小为 <code>m x n</code> 的矩阵 <code>grid</code> ，矩阵由若干 <strong>正</strong> 整数组成。</p>
@@ -37,31 +35,38 @@ import java.util.Arrays;
  </ul>
  */
 public class MaximumNumberOfMovesInAGrid {
-    public int maxMoves(int[][] grid) {
-        int m = grid.length, n = grid[0].length;
+    private static final int[][] dict = new int[][]{{-1,1}, {0,1},{1,1}};
 
-        int[][] dp = new int[m][n];
-        for (int i = 0; i < m; i++) {
-            Arrays.fill(dp[i], Integer.MIN_VALUE);
-            dp[i][0] = 0;
-        }
+    private int[][] grid;
+    private int[][] visited;
+    private int n;
+    private int m;
+
+    public int maxMoves(int[][] grid) {
+        this.grid = grid;
+        this.n = grid.length;
+        this.m = grid[0].length;
+        this.visited = new int[n][m];
 
         int res = 0;
-        for (int j = 1; j < n; j++) {
-            for (int i = 0; i < m; i++) {
-
-                for (int k = -1; k <= 1; k++) {
-                    if (i + k < 0 || i + k >= m) continue;
-
-                    if (grid[i + k][j - 1] < grid[i][j]) {
-                        dp[i][j] = Math.max(dp[i][j], dp[i + k][j - 1] + 1);
-
-                        res = Math.max(res, dp[i][j]);
-                    }
-                }
-            }
+        for (int i = 0; i < n; i++) {
+            res = Math.max(res, dfs(i, 0) - 1);
         }
-
         return res;
+    }
+
+    private int dfs(int i, int j) {
+        if (visited[i][j] != 0) return visited[i][j];
+
+        int c = 0;
+        for (int[] d : dict) {
+            int ni = i + d[0], nj = j + d[1];
+            if (ni < 0 || ni >= n || nj < 0 || nj >= m || grid[i][j] >= grid[ni][nj]) continue;
+
+            c = Math.max(c, dfs(ni, nj));
+        }
+        c++;
+        visited[i][j] = c;
+        return c;
     }
 }

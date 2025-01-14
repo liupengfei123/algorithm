@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.tags.array;
+package lpf.learn.leetcode.tags.graph;
 
 import org.junit.Assert;
 import org.junit.Test;
