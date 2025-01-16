@@ -1,6 +1,5 @@
-package lpf.learn.leetcode.tags.dp;
+package lpf.learn.leetcode.tags.graph;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -42,32 +41,41 @@ import java.util.Queue;
  </ul>
  */
 public class ShortestPathInBinaryMatrix {
+    private final static int[][] dict = new int[][]{{1, 0}, {0, -1}, {-1, 0}, {0, 1}, {1,1},{1,-1},{-1,1},{-1,-1}};
+    private final Queue<int[]> queue = new LinkedList<>();
+
+    private int[][] grid;
+    private boolean[][] visited;
+    private int n;
+    private int m;
+
     public int shortestPathBinaryMatrix(int[][] grid) {
-        int n = grid.length;
-        if(grid[0][0] == 1 || grid[n - 1][n - 1] == 1) return -1;
+        this.grid = grid;
+        this.n = grid.length;
+        this.m = grid[0].length;
+        this.visited = new boolean[n][m];
 
-        int[][] dp = new int[n][n];
-        for (int i = 0; i < n; i++) Arrays.fill(dp[i], 0x3f3f3f3f);
-        dp[0][0] = 1;
+        if (grid[0][0] == 1) return -1;
 
-        int[][] dicts = new int[][]{{1, 1},{1, 0},{1, -1},{0, 1},{0, -1},{-1, 1},{-1, 0},{-1, -1}};
-        Queue<Integer> queue = new LinkedList<>();
-        queue.offer(0);
+        queue.add(new int[]{0, 0, 1});
+        return bfs();
+    }
 
+    private int bfs() {
         while (!queue.isEmpty()) {
-            Integer poll = queue.poll();
-            int x = poll / n, y = poll % n;
+            int[] pos = queue.poll();
+            int i = pos[0], j = pos[1], x = pos[2];
 
-            for (int[] dict : dicts) {
-                int nx = dict[0] + x, ny = dict[1] + y;
-                if (nx < 0 || nx >= n || ny < 0 || ny >= n) continue;
-                if (grid[nx][ny] == 1) continue;
-                if (dp[nx][ny] <= dp[x][y] + 1) continue;
+            if (i == n - 1 && j == m - 1) return x;
 
-                queue.offer(nx * n + ny);
-                dp[nx][ny] = dp[x][y] + 1;
+            for (int[] d : dict) {
+                int ni = i + d[0], nj = j + d[1];
+                if (ni < 0 || ni >= n || nj < 0 || nj >= m || grid[ni][nj] == 1 || visited[ni][nj]) continue;
+
+                visited[ni][nj] = true;
+                queue.add(new int[]{ni, nj, x + 1});
             }
         }
-        return dp[n - 1][n - 1] >= 0x3f3f3f3f ? -1 : dp[n - 1][n - 1];
+        return -1;
     }
 }
