@@ -71,12 +71,12 @@ public class SnakesAndLadders {
         visited[0] = visited[1] = 0;
         queue.add(1);
 
-        dfs();
+        bfs();
 
         return visited[total] == 10000000 ? -1 : visited[total];
     }
 
-    private void dfs() {
+    private void bfs() {
         while (!queue.isEmpty()) {
             int pos = queue.poll();
             for (int s = 1; s <= 6; s++) {

@@ -62,12 +62,12 @@ public class ShortestPathInAGridWithObstaclesElimination {
         visited[0][0] = 0;
         queue.add(new int[]{0, 0, 0});
 
-        dfs();
+        bfs();
 
         return res == 10000000 ? -1 : res;
     }
 
-    private void dfs() {
+    private void bfs() {
         while (!queue.isEmpty()) {
             int[] pos = queue.poll();
             int i = pos[0], j = pos[1], x = pos[2] % total, z = pos[2] / total; //x 为 d(路径), z(消除 z 个障碍物额度)

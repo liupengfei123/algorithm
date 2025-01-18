@@ -71,12 +71,12 @@ public class MinimumMovesToReachTargetWithRotations {
 
         queue.add(new int[]{0, 0, 0, 1, 0, 0});
 
-        dfs();
+        bfs();
 
         return visited[0][total - 1] == 10000000 ? -1 : visited[0][total - 1] ;
     }
 
-    private void dfs() {
+    private void bfs() {
         while (!queue.isEmpty()) {
             int[] poll = queue.poll();
             int i1 = poll[0], j1 = poll[1], i2 = poll[2], j2 = poll[3], t = poll[4], x = poll[5]; // [x1,y1] [x2,y2]  type  d
