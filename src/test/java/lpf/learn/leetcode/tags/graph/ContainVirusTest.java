@@ -1,5 +1,6 @@
-package lpf.learn.leetcode.tags.array;
+package lpf.learn.leetcode.tags.graph;
 
+import lpf.learn.leetcode.tags.array.CanPlaceFlowers;
 import org.junit.Assert;
 import org.junit.Test;
 
