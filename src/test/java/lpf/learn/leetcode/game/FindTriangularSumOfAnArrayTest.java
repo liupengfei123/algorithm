@@ -15,11 +15,4 @@ public class FindTriangularSumOfAnArrayTest {
         FindTriangularSumOfAnArray test = new FindTriangularSumOfAnArray();
         Assert.assertEquals(5, test.triangularSum(new int[]{5}));
     }
-
-    @Test
-    public void test3(){
-        MinimumBitFlipstoConvertNumber test = new MinimumBitFlipstoConvertNumber();
-        Assert.assertEquals(2, test.minBitFlips(3, 10));
-    }
-
 }
