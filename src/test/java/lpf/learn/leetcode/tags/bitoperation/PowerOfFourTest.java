@@ -36,4 +36,9 @@ public class PowerOfFourTest {
         Assert.assertTrue(test.isPowerOfFour(16777216));
     }
 
+    @Test
+    public void test6(){
+        PowerOfFour test = new PowerOfFour();
+        Assert.assertFalse(test.isPowerOfFour(5));
+    }
 }

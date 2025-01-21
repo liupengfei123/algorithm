@@ -35,4 +35,10 @@ public class BinaryNumberWithAlternatingBitsTest {
         BinaryNumberWithAlternatingBits test = new BinaryNumberWithAlternatingBits();
         Assert.assertTrue(test.hasAlternatingBits(89478485));
     }
+
+    @Test
+    public void test6(){
+        BinaryNumberWithAlternatingBits test = new BinaryNumberWithAlternatingBits();
+        Assert.assertFalse(test.hasAlternatingBits(6));
+    }
 }

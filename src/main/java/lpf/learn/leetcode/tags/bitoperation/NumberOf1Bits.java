@@ -1,43 +1,42 @@
 package lpf.learn.leetcode.tags.bitoperation;
 
-/** [191]位1的个数
- * 编写一个函数，输入是一个无符号整数（以二进制串的形式），返回其二进制表达式中数字位数为 '1' 的个数（也被称为汉明重量）。
- * 提示：
- * 请注意，在某些语言（如 Java）中，没有无符号整数类型。在这种情况下，输入和输出都将被指定为有符号整数类型，并且不应影响您的实现，因为无论整数是有符号的
- * 还是无符号的，其内部的二进制表示形式都是相同的。
- * 在 Java 中，编译器使用二进制补码记法来表示有符号整数。因此，在上面的 示例 3 中，输入表示有符号整数 -3。
- * 进阶：
- * 如果多次调用这个函数，你将如何优化你的算法？
- *
- * 示例 1：
- * 输入：00000000000000000000000000001011
- * 输出：3
- * 解释：输入的二进制串 00000000000000000000000000001011 中，共有三位为 '1'。
- *
- * 示例 2：
- * 输入：00000000000000000000000010000000
- * 输出：1
- * 解释：输入的二进制串 00000000000000000000000010000000 中，共有一位为 '1'。
- *
- * 示例 3：
- * 输入：11111111111111111111111111111101
- * 输出：31
- * 解释：输入的二进制串 11111111111111111111111111111101 中，共有 31 位为 '1'。
- *
- * 提示：
- * 输入必须是长度为 32 的 二进制串 。
+
+/** 191 位1的个数
+ <p>给定一个正整数 <code>n</code>，编写一个函数，获取一个正整数的二进制形式并返回其二进制表达式中 <span data-keyword="set-bit">设置位</span> 的个数（也被称为<a href="https://baike.baidu.com/item/%E6%B1%89%E6%98%8E%E9%87%8D%E9%87%8F" target="_blank">汉明重量</a>）。</p>
+
+ <p><strong>示例 1：</strong></p>
+ <pre>
+ <strong>输入：</strong>n = 11
+ <strong>输出：</strong>3
+ <strong>解释：</strong>输入的二进制串 <span><code><strong>1011</strong>&nbsp;中，共有 3 个设置位。</code></span>
+ </pre>
+
+ <p><strong>示例 2：</strong></p>
+ <pre>
+ <strong>输入：</strong>n = 128
+ <strong>输出：</strong>1
+ <strong>解释：</strong>输入的二进制串 <strong>10000000</strong>&nbsp;中，共有 1 个设置位。
+ </pre>
+
+ <p><strong>示例 3：</strong></p>
+ <pre>
+ <strong>输入：</strong>n = 2147483645
+ <strong>输出：</strong>30
+ <strong>解释：</strong>输入的二进制串 <strong>1111111111111111111111111111101</strong> 中，共有 30 个设置位。</pre>
+
+ <p><strong>提示：</strong></p>
+ <ul>
+ <li><code>1 &lt;= n &lt;= 2<sup>31</sup> - 1</code></li>
+ </ul>
+
+ <p><strong>进阶</strong>：</p>
+ <ul>
+ <li>如果多次调用这个函数，你将如何优化你的算法？</li>
+ </ul>
  */
 public class NumberOf1Bits {
 
     public int hammingWeight(int n) {
-        int result = 0;
-
-        while (n != 0) {
-            if ((n & 0x01) == 1) {
-                result++;
-            }
-            n >>>= 1;
-        }
-        return result;
+        return Integer.bitCount(n);
     }
 }

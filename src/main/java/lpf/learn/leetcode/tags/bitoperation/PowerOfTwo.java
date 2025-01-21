@@ -1,31 +1,38 @@
 package lpf.learn.leetcode.tags.bitoperation;
 
-/** [231]2的幂
- * 给定一个整数，编写一个函数来判断它是否是 2 的幂次方。
- *
- * 示例 1:
- * 输入: 1
- * 输出: true
- * 解释: 20 = 1
- *
- * 示例 2:
- * 输入: 16
- * 输出: true
- * 解释: 24 = 16
- *
- * 示例 3:
- * 输入: 218
- * 输出: false
+
+/** [231] 2 的幂
+ <p>给你一个整数 <code>n</code>，请你判断该整数是否是 2 的幂次方。如果是，返回 <code>true</code> ；否则，返回 <code>false</code> 。</p>
+ <p>如果存在一个整数 <code>x</code> 使得&nbsp;<code>n == 2<sup>x</sup></code> ，则认为 <code>n</code> 是 2 的幂次方。</p>
+
+ <p><strong>示例 1：</strong></p>
+ <pre>
+ <strong>输入：</strong>n = 1
+ <strong>输出：</strong>true
+ <strong>解释：</strong>2<sup>0</sup> = 1
+ </pre>
+
+ <p><strong>示例 2：</strong></p>
+ <pre>
+ <strong>输入：</strong>n = 16
+ <strong>输出：</strong>true
+ <strong>解释：</strong>2<sup>4</sup> = 16
+ </pre>
+
+ <p><strong>示例 3：</strong></p>
+ <pre>
+ <strong>输入：</strong>n = 3
+ <strong>输出：</strong>false
+ </pre>
+
+ <p><strong>提示：</strong></p>
+ <ul>
+ <li><code>-2<sup>31</sup> &lt;= n &lt;= 2<sup>31</sup> - 1</code></li>
+ </ul>
+ <p><strong>进阶：</strong>你能够不使用循环/递归解决此问题吗？</p>
  */
 public class PowerOfTwo {
     public boolean isPowerOfTwo(int n) {
-        int oneCount = 0;
-        while (n > 0) {
-            if ((n & 1) == 1) {
-                oneCount++;
-            }
-            n >>>= 1;
-        }
-        return oneCount == 1;
+        return n >= 1 && Integer.bitCount(n) == 1;
     }
 }

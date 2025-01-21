@@ -1,44 +1,46 @@
 package lpf.learn.leetcode.tags.bitoperation;
 
-/** [693]交替位二进制数
- * 给定一个正整数，检查它的二进制表示是否总是 0、1 交替出现：换句话说，就是二进制表示中相邻两位的数字永不相同。
+
+/**
+ * 693 交替位二进制数
+ * <p>给定一个正整数，检查它的二进制表示是否总是 0、1 交替出现：换句话说，就是二进制表示中相邻两位的数字永不相同。</p>
  *
- * 示例 1：
- * 输入：n = 5
- * 输出：true
- * 解释：5 的二进制表示是：101
+ * <p><strong>示例 1：</strong></p>
+ * <pre>
+ * <strong>输入：</strong>n = 5
+ * <strong>输出：</strong>true
+ * <strong>解释：</strong>5 的二进制表示是：101
+ * </pre>
  *
- * 示例 2：
- * 输入：n = 7
- * 输出：false
- * 解释：7 的二进制表示是：111.
+ * <p><strong>示例 2：</strong></p>
+ * <pre>
+ * <strong>输入：</strong>n = 7
+ * <strong>输出：</strong>false
+ * <strong>解释：</strong>7 的二进制表示是：111.</pre>
  *
- * 示例 3：
- * 输入：n = 11
- * 输出：false
- * 解释：11 的二进制表示是：1011.
+ * <p><strong>示例 3：</strong></p>
+ * <pre>
+ * <strong>输入：</strong>n = 11
+ * <strong>输出：</strong>false
+ * <strong>解释：</strong>11 的二进制表示是：1011.</pre>
  *
- * 提示：
- * 1 <= n <= 2^31 - 1
+ * <p><strong>提示：</strong></p>
+ * <ul>
+ * <li><code>1 &lt;= n &lt;= 2<sup>31</sup> - 1</code></li>
+ * </ul>
  */
 public class BinaryNumberWithAlternatingBits {
 
     public boolean hasAlternatingBits(int n) {
-        int flag = 1;
-        int lastBit = -1;
-        while (n != 0) {
-            int i = n & flag;
-            if (lastBit == i) {
-                return false;
-            }
-            lastBit = i;
-            n = n >>> 1;
+        while (n > 0) {
+            if ((n & 3) == 0 || (n & 3) == 3) return false;
+            n >>= 1;
         }
         return true;
     }
 
     public boolean hasAlternatingBits2(int n) {
-        int a = n ^ (n >> 1);
-        return (a & (a + 1)) == 0;
+        int x = n ^ (n >> 1);
+        return (x & (x + 1)) == 0;
     }
 }
