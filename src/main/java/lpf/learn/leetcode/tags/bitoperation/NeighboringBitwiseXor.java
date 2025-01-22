@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.game.weekly345;
+package lpf.learn.leetcode.tags.bitoperation;
 
 
 /** [2683] 相邻值的按位异或
@@ -48,11 +48,9 @@ package lpf.learn.leetcode.game.weekly345;
 public class NeighboringBitwiseXor {
 
     public boolean doesValidArrayExist(int[] derived) {
-        boolean res = derived[0] == 1;
-
-        for (int i = 1; i < derived.length; i++) {
-            res ^= derived[i] == 1;
-        }
-        return !res;
+        int res = 0;
+        for (int b : derived)
+            res ^= b;
+        return res == 0;
     }
 }
