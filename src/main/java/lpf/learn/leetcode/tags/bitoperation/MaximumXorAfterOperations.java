@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.game.biweekly81;
+package lpf.learn.leetcode.tags.bitoperation;
 
 /** [2317] 操作后的最大异或和
  * <p>给你一个下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>nums</code>&nbsp;。一次操作中，选择 <strong>任意</strong>&nbsp;非负整数&nbsp;<code>x</code>&nbsp;和一个下标&nbsp;<code>i</code>&nbsp;，<strong>更新</strong>&nbsp;<code>nums[i]</code>&nbsp;为&nbsp;<code>nums[i] AND (nums[i] XOR x)</code>&nbsp;。</p>
@@ -28,10 +28,8 @@ package lpf.learn.leetcode.game.biweekly81;
  */
 public class MaximumXorAfterOperations {
     public int maximumXOR(int[] nums) {
-        int value = 0;
-        for (int num : nums) {
-            value |= num;
-        }
-        return value;
+        int res = 0;
+        for (int num : nums) res |= num;
+        return res;
     }
 }
