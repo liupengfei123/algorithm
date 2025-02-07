@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.game.weekly332;
+package lpf.learn.leetcode.tags.bitoperation;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,26 +41,21 @@ import java.util.Map;
  */
 public class SubstringXorQueries {
     public int[][] substringXorQueries(String s, int[][] queries) {
-        int length = s.length();
-
-        Map<String, Integer> map = new HashMap<>();
-        for (int i = 0; i < length; i++) {
-            for (int j = i; j < length && j - i < 33; j++)  map.putIfAbsent(s.substring(i, j + 1), i);
+        int n = s.length();
+        char[] chars = s.toCharArray();
+        Map<Integer, int[]> map = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            int val = 0;
+            for (int j = 0; i + j < n && j < 31; j++) {
+                val = (val << 1) | chars[i + j] - '0';
+                map.putIfAbsent(val, new int[]{i, i + j});
+                if (val == 0) break;
+            }
         }
 
         int[][] res = new int[queries.length][2];
         for (int i = 0; i < queries.length; i++) {
-            int[] query = queries[i];
-
-            String value = Integer.toBinaryString(query[0] ^ query[1]);
-
-            int left = map.getOrDefault(value, -1);
-            res[i][0] = left;
-            if (left < 0) {
-                res[i][1] = -1;
-            } else {
-                res[i][1] = left + value.length() - 1;
-            }
+            res[i] = map.getOrDefault(queries[i][0] ^ queries[i][1], new int[]{-1, - 1});
         }
         return res;
     }

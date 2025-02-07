@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.game.weekly332;
+package lpf.learn.leetcode.tags.bitoperation;
 
 import org.junit.Assert;
 import org.junit.Test;
