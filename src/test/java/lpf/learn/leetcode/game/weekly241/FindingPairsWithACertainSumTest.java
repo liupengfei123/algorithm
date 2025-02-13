@@ -15,10 +15,4 @@ public class FindingPairsWithACertainSumTest {
         test.add(1,1);
         Assert.assertEquals(11, test.count(7));
     }
-
-    @Test
-    public void test2(){
-        SumOfAllSubsetXORTotals test = new SumOfAllSubsetXORTotals();
-        Assert.assertEquals(480, test.subsetXORSum(new int[]{3,4,5,6,7,8}));
-    }
 }
