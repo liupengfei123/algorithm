@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.game.weekly329;
+package lpf.learn.leetcode.tags.bitoperation;
 
 /** 2546 执行逐位运算使字符串相等
  <p>给你两个下标从 <strong>0</strong> 开始的 <strong>二元</strong> 字符串 <code>s</code> 和 <code>target</code> ，两个字符串的长度均为 <code>n</code> 。你可以对 <code>s</code> 执行下述操作 <strong>任意</strong> 次：</p>
