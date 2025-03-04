@@ -1,7 +1,4 @@
-package lpf.learn.leetcode.game.weekly303;
-
-import java.util.HashSet;
-import java.util.Set;
+package lpf.learn.leetcode.tags.bitoperation;
 
 /** [2354] 优质数对的数目
  <p>给你一个下标从 <strong>0</strong> 开始的正整数数组 <code>nums</code> 和一个正整数 <code>k</code> 。</p>
@@ -43,39 +40,7 @@ import java.util.Set;
  */
 public class NumberOfExcellentPairs {
     public long countExcellentPairs(int[] nums, int k) {
-        Set<Integer> set = new HashSet<>();
-        for (int num : nums) {
-            set.add(num);
-        }
-        int maxCount = 0;
-        int[] counts = new int[64];
-        for (Integer i : set) {
-            int tempCount = oneCount(i);
-            maxCount = Math.max(maxCount, tempCount);
-            counts[tempCount]++;
-        }
-
-        long result = 0;
-        for (Integer i : set) {
-            int count = oneCount(i);
-            long temp = 0;
-            for (int j = Math.max(0, k - count); j <= maxCount; j++) {
-                temp += counts[j];
-            }
-            result += temp;
-        }
-
-        return result;
-    }
-
-    private int oneCount(int num) {
-        int count = 0;
-        while (num > 0) {
-            if ((num & 1) == 1) {
-                count++;
-            }
-            num = (num >> 1);
-        }
-        return count;
+        // todo
+        return 0;
     }
 }

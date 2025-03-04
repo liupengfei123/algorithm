@@ -34,20 +34,8 @@ package lpf.learn.leetcode.tags.bitoperation;
 public class SingleNumberIii {
 
     public int[] singleNumber(int[] nums) {
-        int xorsum = 0;
-        for (int num : nums) xorsum ^= num;
-
-        // 防止溢出
-        int lsb = xorsum & (-xorsum);
-        int res1 = 0, res2 = 0;
-        for (int num : nums) {
-            if ((num & lsb) > 0) {
-                res1 ^= num;
-            } else {
-                res2 ^= num;
-            }
-        }
-        return new int[]{res1, res2};
+        // todo
+        return null;
     }
 
 }

@@ -1,34 +1,32 @@
 package lpf.learn.leetcode.tags.bitoperation;
 
-/** [137]只出现一次的数字 II
- * 给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现了三次。找出那个只出现了一次的元素。
- *
- * 说明：
- * 你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？
- *
- * 示例 1:
- * 输入: [2,2,3,2]
- * 输出: 3
- *
- * 示例 2:
- * 输入: [0,1,0,1,0,1,99]
- * 输出: 99
+
+/** 137 只出现一次的数字 II
+ <p>给你一个整数数组&nbsp;<code>nums</code> ，除某个元素仅出现 <strong>一次</strong> 外，其余每个元素都恰出现 <strong>三次 。</strong>请你找出并返回那个只出现了一次的元素。</p>
+ <p>你必须设计并实现线性时间复杂度的算法且使用常数级空间来解决此问题。</p>
+
+ <p><strong>示例 1：</strong></p>
+ <pre>
+ <strong>输入：</strong>nums = [2,2,3,2]
+ <strong>输出：</strong>3
+ </pre>
+
+ <p><strong>示例 2：</strong></p>
+ <pre>
+ <strong>输入：</strong>nums = [0,1,0,1,0,1,99]
+ <strong>输出：</strong>99
+ </pre>
+
+ <p><strong>提示：</strong></p>
+ <ul>
+ <li><code>1 &lt;= nums.length &lt;= 3 * 10<sup>4</sup></code></li>
+ <li><code>-2<sup>31</sup> &lt;= nums[i] &lt;= 2<sup>31</sup> - 1</code></li>
+ <li><code>nums</code> 中，除某个元素仅出现 <strong>一次</strong> 外，其余每个元素都恰出现 <strong>三次</strong></li>
+ </ul>
  */
 public class SingleNumberIi {
     public int singleNumber(int[] nums) {
-        int seenOnce = 0, seenTwice = 0;
-
-        for (int num : nums) {
-
-            seenOnce = ~seenTwice & (seenOnce ^ num);
-            seenTwice = ~seenOnce & (seenTwice ^ num);
-
-            System.out.println("num:        " + String.format("%32s",Integer.toBinaryString(num)));
-            System.out.println("seenOnce:   " + String.format("%32s", Integer.toBinaryString(seenOnce)));
-            System.out.println("seenTwice:  " + String.format("%32s",Integer.toBinaryString(seenTwice)));
-            System.out.println();
-        }
-
-        return seenOnce;
+        // todo
+        return 0;
     }
 }
