@@ -1,6 +1,4 @@
-package lpf.learn.leetcode.game.weekly299;
-
-import java.util.Arrays;
+package lpf.learn.leetcode.tags.dp;
 
 /** [2320] 统计放置房子的方式数
  * <p>一条街道上共有 <code>n * 2</code> 个 <strong>地块</strong> ，街道的两侧各有 <code>n</code> 个地块。每一边的地块都按从 <code>1</code> 到 <code>n</code> 编号。每个地块上都可以放置一所房子。</p>
@@ -31,21 +29,18 @@ import java.util.Arrays;
  * </ul>
  */
 public class CountNumberOfWaysToPlaceHouses {
+    private static final int MOD = 1000_000_007;
 
     public int countHousePlacements(int n) {
-        int mod = 1000_000_007;
-
-        // dp[i][0] 表示 i 的位置不摆放房子， dp[i][1] 表示摆放房子
-        int[][] dp = new int[n][2];
-        Arrays.fill(dp[0], 1);
-
+        long[] dp = new long[2]; // [0] 不摆放房子最大方案数，  [1]摆放房子最大方案数
+        dp[0] = dp[1] = 1;
         for (int i = 1; i < n; i++) {
-            dp[i][0] = (dp[i - 1][0] + dp[i - 1][1]) % mod;
-            dp[i][1] = dp[i - 1][0];
+            long v1 = dp[0], v2 = dp[1];
+            dp[0] = (v1 + v2) % MOD;
+            dp[1] = v1;
         }
-
-        long value = (dp[n - 1][0] + dp[n - 1][1]) % mod;
-        return (int) ((value * value) % mod);
+        long cnt = dp[0] + dp[1];
+        return (int) ((cnt * cnt) % MOD);
     }
 
 }

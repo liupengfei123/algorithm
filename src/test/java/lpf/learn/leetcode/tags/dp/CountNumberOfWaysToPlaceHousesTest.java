@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.game.weekly299;
+package lpf.learn.leetcode.tags.dp;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -34,6 +34,6 @@ public class CountNumberOfWaysToPlaceHousesTest {
     @Test
     public void test5(){
         CountNumberOfWaysToPlaceHouses test = new CountNumberOfWaysToPlaceHouses();
-        Assert.assertEquals(452249287, test.countHousePlacements(10000));
+        Assert.assertEquals(402613600, test.countHousePlacements(10000));
     }
 }
