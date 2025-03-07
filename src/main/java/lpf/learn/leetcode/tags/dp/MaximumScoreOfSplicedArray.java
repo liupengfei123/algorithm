@@ -1,4 +1,4 @@
-package lpf.learn.leetcode.game.weekly299;
+package lpf.learn.leetcode.tags.dp;
 
 /** [2321] 拼接数组的最大分数
  * <p>给你两个下标从 <strong>0</strong> 开始的整数数组 <code>nums1</code> 和 <code>nums2</code> ，长度都是 <code>n</code> 。</p>
@@ -43,38 +43,7 @@ package lpf.learn.leetcode.game.weekly299;
  */
 public class MaximumScoreOfSplicedArray {
     public int maximumsSplicedArray(int[] nums1, int[] nums2) {
-        int n = nums1.length;
-
-        int[] diffNums = new int[n];
-        int sum1 = 0;
-        int sum2 = 0;
-
-        for (int i = 0; i < n; i++) {
-            sum1 += nums1[i];
-            sum2 += nums2[i];
-
-            diffNums[i] = nums1[i] - nums2[i];
-        }
-
-        int result = Math.max(sum1, sum2);
-
-        int tempSum = 0;
-        for (int i = 0; i < n; i++) {
-            tempSum += diffNums[i];
-            if (tempSum < 0) {
-                tempSum = 0;
-            }
-            result = Math.max(result, Math.max(sum1, sum2 + tempSum));
-        }
-        tempSum = 0;
-        for (int i = 0; i < n; i++) {
-            tempSum += diffNums[i];
-            if (tempSum > 0) {
-                tempSum = 0;
-            }
-            result = Math.max(result, Math.max(sum1 - tempSum, sum2));
-        }
-
-        return result;
+        // todo
+        return 0;
     }
 }
