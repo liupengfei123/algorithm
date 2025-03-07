@@ -1,5 +1,6 @@
 package lpf.learn.leetcode.game.weekly299;
 
+import lpf.learn.leetcode.tags.dp.MaximumScoreOfSplicedArray;
 import org.junit.Assert;
 import org.junit.Test;
 

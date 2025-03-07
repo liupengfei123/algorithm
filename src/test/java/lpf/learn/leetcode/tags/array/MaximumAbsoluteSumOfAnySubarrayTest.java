@@ -1,5 +1,6 @@
 package lpf.learn.leetcode.tags.array;
 
+import lpf.learn.leetcode.tags.dp.MaximumAbsoluteSumOfAnySubarray;
 import org.junit.Assert;
 import org.junit.Test;
 

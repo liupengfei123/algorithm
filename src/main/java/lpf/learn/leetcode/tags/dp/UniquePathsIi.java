@@ -1,48 +1,50 @@
 package lpf.learn.leetcode.tags.dp;
 
-/** [63]不同路径 II
- * 一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。
- * 机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。
- * 现在考虑网格中有障碍物。那么从左上角到右下角将会有多少条不同的路径？
- *
- * 网格中的障碍物和空位置分别用 1 和 0 来表示。
- *
- * 示例 1：
- * 输入：obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]]
- * 输出：2
- * 解释：
- * 3x3 网格的正中间有一个障碍物。
- * 从左上角到右下角一共有 2 条不同的路径：
- * 1. 向右 -> 向右 -> 向下 -> 向下
- * 2. 向下 -> 向下 -> 向右 -> 向右
- *
- * 示例 2：
- * 输入：obstacleGrid = [[0,1],[0,0]]
- * 输出：1
- *
- * 提示：
- * m == obstacleGrid.length
- * n == obstacleGrid[i].length
- * 1 <= m, n <= 100
- * obstacleGrid[i][j] 为 0 或 1
+
+/** 63 不同路径 II
+ <p>给定一个&nbsp;<code>m x n</code>&nbsp;的整数数组&nbsp;<code>grid</code>。一个机器人初始位于 <strong>左上角</strong>（即 <code>grid[0][0]</code>）。机器人尝试移动到 <strong>右下角</strong>（即 <code>grid[m - 1][n - 1]</code>）。机器人每次只能向下或者向右移动一步。</p>
+ <p>网格中的障碍物和空位置分别用 <code>1</code> 和 <code>0</code> 来表示。机器人的移动路径中不能包含 <strong>任何</strong>&nbsp;有障碍物的方格。</p>
+ <p>返回机器人能够到达右下角的不同路径数量。</p>
+ <p>测试用例保证答案小于等于 <code>2 * 10<sup>9</sup></code>。</p>
+
+ <p><strong>示例 1：</strong></p>
+ <img alt="" src="https://assets.leetcode.com/uploads/2020/11/04/robot1.jpg" />
+ <pre>
+ <strong>输入：</strong>obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]]
+ <strong>输出：</strong>2
+ <strong>解释：</strong>3x3 网格的正中间有一个障碍物。
+ 从左上角到右下角一共有 <span><code>2</code></span> 条不同的路径：
+ 1. 向右 -&gt; 向右 -&gt; 向下 -&gt; 向下
+ 2. 向下 -&gt; 向下 -&gt; 向右 -&gt; 向右
+ </pre>
+
+ <p><strong>示例 2：</strong></p>
+ <img alt="" src="https://assets.leetcode.com/uploads/2020/11/04/robot2.jpg" />
+ <pre>
+ <strong>输入：</strong>obstacleGrid = [[0,1],[0,0]]
+ <strong>输出：</strong>1
+ </pre>
+
+ <p><strong>提示：</strong></p>
+ <ul>
+ <li><code>m ==&nbsp;obstacleGrid.length</code></li>
+ <li><code>n ==&nbsp;obstacleGrid[i].length</code></li>
+ <li><code>1 &lt;= m, n &lt;= 100</code></li>
+ <li><code>obstacleGrid[i][j]</code> 为 <code>0</code> 或 <code>1</code></li>
+ </ul>
  */
 public class UniquePathsIi {
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
-        int m = obstacleGrid.length;
-        int n = obstacleGrid[0].length;
+        int n = obstacleGrid.length, m = obstacleGrid[0].length;
 
-        int[] array = new int[n + 1];
-        array[n - 1] = 1;
+        int[] dp = new int[m + 1];
+        dp[m - 1] = 1;
 
-        for (int i = m - 1; i >= 0; i--) {
-            for (int j = n - 1; j >= 0; j--) {
-                if (obstacleGrid[i][j] != 1) {
-                    array[j] = array[j + 1] + array[j];
-                } else {
-                    array[j] = 0;
-                }
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = m - 1; j >= 0; j--) {
+                dp[j] = obstacleGrid[i][j] == 1 ? 0 : dp[j] + dp[j + 1];
             }
         }
-        return array[0];
+        return dp[0];
     }
 }

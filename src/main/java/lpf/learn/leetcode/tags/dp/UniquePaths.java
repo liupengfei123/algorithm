@@ -1,76 +1,54 @@
 package lpf.learn.leetcode.tags.dp;
 
-import java.util.HashMap;
-import java.util.Map;
+/** 62 不同路径
+ <p>一个机器人位于一个 <code>m x n</code><em>&nbsp;</em>网格的左上角 （起始点在下图中标记为 “Start” ）。</p>
+ <p>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish” ）。</p>
+ <p>问总共有多少条不同的路径？</p>
 
-/** [62]不同路径
- *
- * 一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为 “Start” ）。
- * 机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish” ）。
- * 问总共有多少条不同的路径？
- *
- * 示例 1：
- * 输入：m = 3, n = 7
- * 输出：28
- *
- * 示例 2：
- * 输入：m = 3, n = 2
- * 输出：3
- * 解释：
- * 从左上角开始，总共有 3 条路径可以到达右下角。
- * 1. 向右 -> 向下 -> 向下
- * 2. 向下 -> 向下 -> 向右
- * 3. 向下 -> 向右 -> 向下
- *
- * 示例 3：
- * 输入：m = 7, n = 3
- * 输出：28
- *
- * 示例 4：
- * 输入：m = 3, n = 3
- * 输出：6
- *
- * 提示：
- * 1 <= m, n <= 100
- * 题目数据保证答案小于等于 2 * 109
+ <p><strong>示例 1：</strong></p>
+ <img src="https://pic.leetcode.cn/1697422740-adxmsI-image.png" style="width: 400px; height: 183px;" />
+ <pre>
+ <strong>输入：</strong>m = 3, n = 7
+ <strong>输出：</strong>28</pre>
+
+ <p><strong>示例 2：</strong></p>
+ <pre>
+ <strong>输入：</strong>m = 3, n = 2
+ <strong>输出：</strong>3
+ <strong>解释：</strong>
+ 从左上角开始，总共有 3 条路径可以到达右下角。
+ 1. 向右 -&gt; 向下 -&gt; 向下
+ 2. 向下 -&gt; 向下 -&gt; 向右
+ 3. 向下 -&gt; 向右 -&gt; 向下
+ </pre>
+
+ <p><strong>示例 3：</strong></p>
+ <pre>
+ <strong>输入：</strong>m = 7, n = 3
+ <strong>输出：</strong>28
+ </pre>
+
+ <p><strong>示例 4：</strong></p>
+ <pre>
+ <strong>输入：</strong>m = 3, n = 3
+ <strong>输出：</strong>6</pre>
+
+ <p><strong>提示：</strong></p>
+ <ul>
+ <li><code>1 &lt;= m, n &lt;= 100</code></li>
+ <li>题目数据保证答案小于等于 <code>2 * 10<sup>9</sup></code></li>
+ </ul>
  */
 public class UniquePaths {
-    private int m;
-    private int n;
-
-    public int uniquePaths2(int m, int n) {
-        this.m = m;
-        this.n = n;
-        return help(1, 1, new HashMap<>());
-    }
-
-
-    private int help(int i, int j, Map<String, Integer> map) {
-        if (i >= m || j >= n) {
-            return 1;
-        }
-        String key = i + "," + j;
-        if (map.containsKey(key)) {
-            return map.get(key);
-        }
-
-        int result = help(i + 1, j, map) + help(i, j + 1, map);
-        map.put(key, result);
-        return result;
-    }
-
-
     public int uniquePaths(int m, int n) {
-        int[] array = new int[n + 1];
-        array[n - 1] = 1;
-
+        int[] dp = new int[n + 1];
+        dp[n - 1] = 1;
         for (int i = m - 1; i >= 0; i--) {
             for (int j = n - 1; j >= 0; j--) {
-                array[j] = array[j + 1] + array[j];
+                dp[j] = dp[j] + dp[j + 1];
             }
         }
-        return array[0];
+        return dp[0];
     }
-
 
 }
