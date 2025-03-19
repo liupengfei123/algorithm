@@ -40,15 +40,16 @@ package lpf.learn.leetcode.tags.dp;
 public class MinimumFallingPathSum {
     public int minFallingPathSum(int[][] matrix) {
         int n = matrix.length;
-        int[][] dp = new int[2][n];
 
+        int[][] dp = new int[n + 1][n + 2];
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++)
-                dp[(i + 1) & 1][j] = matrix[i][j] + Math.min(dp[i & 1][j],
-                        Math.min((j > 0 ? dp[i & 1][j - 1] : 100000), (j < n - 1 ? dp[i & 1][j + 1] : 100000)));
+            dp[i][0] = dp[i][n + 1] = 1000000;
+            for (int j = 1; j <= n; j++) {
+                dp[i + 1][j] = Math.min(Math.min(dp[i][j - 1], dp[i][j]), dp[i][j + 1]) + matrix[i][j - 1];
+            }
         }
-        int res = 100000;
-        for (int j = 0; j < n; j++) res = Math.min(dp[n & 1][j], res);
+        int res = dp[n][1];
+        for (int i = 1; i <= n; i++) res = Math.min(res, dp[n][i]);
         return res;
     }
 }
